@@ -1,0 +1,649 @@
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   See /stylesheets/README.txt for an explanation of
+   any CSS browser detection hacks used in this file
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/*/*//*/
+
+#cnx_sidebar{
+position: absolute;
+top: 80px;
+left: 0;
+width: 170px;
+background-color: white;
+border: 5px solid #497caf;
+border-left-width: 1px;
+border-right-width: 2px;
+}
+
+.cnx_division{
+padding: 0 0 .5em;
+margin: 0;
+}
+
+.cnx_division ul{
+padding: 0;
+margin: 0 .5em .2em -.7em;
+font-family: arial;
+font-size: .7em;
+}
+
+.cnx_division li{
+margin: 0;
+}
+
+#cnx_sidebar h3, #cnx_course_content h3{
+margin: 0 0 0 .1em;
+padding: .2em .25em;
+background-color: #497caf;
+color: white;
+font-size: .85em;
+font-weight: bold;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+border: 0 solid #c90;
+border-bottom-width: 1px;
+text-transform: uppercase;
+}
+
+#cnx_sidebar h4, #cnx_course_content h4{
+margin: 0 0 0 .5em;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+font-size: .8em;
+font-weight: bold;
+}
+
+#cnx_style_chooser, #cnx_eip_link{
+display: none;
+}
+
+
+
+body{
+margin: 0;
+background-color: white;
+background-repeat: repeat-y;
+}
+
+#cnx_module{
+background-image: url("/stylesheets/sky/ns4-module-blue-border.gif");
+}
+
+#cnx_course{
+background-image: url("/stylesheets/sky/ns4-course-blue-border.gif");
+}
+
+p{
+margin: 0;
+}
+
+.cnx_before{
+font-weight: bold;
+}
+
+#cnx_main, #cnx_discussion, #cnx_footer{
+margin: 0 0 20px 180px;
+padding-top: 15px;
+}
+
+#cnx_header{
+margin: 55px 0 0 180px;
+}
+
+#cnx_about_history #cnx_header{
+position: relative;
+left: -3px;
+margin-left: 0;
+}
+
+#cnx_about_history #cnx_main, #cnx_about_history #cnx_footer{
+margin-left: 5px;
+}
+
+#cnx_course #cnx_header, #cnx_course #cnx_main, #cnx_course #cnx_footer, #cnx_course #cnx_discussion{
+margin-left: 280px;
+}
+
+#cnx_header .cnx_previous_next{
+text-align: right;
+}
+
+
+
+#cnx_global{
+position: absolute;
+top: -5px;
+left: -5px;
+right: 0;
+background-color: #369;
+height: 55px;
+width: 100%;
+border: 1px solid #369;
+}
+
+#cnx_logo{
+width: 270px;
+float: left;
+font-weight: bold;
+padding: 0 5px 5px;
+font-family: century gothic, gothic l, tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+#cnx_logo a{
+color: #cde;
+text-decoration: none;
+font-size: .9em;
+}
+
+#cnx_global_links{
+text-align: right;
+color: #def;
+font-size: .8em;
+text-transform: capitalize;
+padding-top: 5px;
+}
+
+#cnx_global_links a{
+color: #cde;
+}
+
+#cnx_search{
+display: inline;
+float: right;
+}
+
+#cnx_search input{
+display: block;
+}
+
+#cnx_search .cnx_button{
+float: right;
+}
+
+#cnx_print{
+position: absolute;
+top: 63px;
+left: 5px;
+font-size: .8em;
+}
+
+#cnx_print a{
+color: #cde;
+}
+
+
+
+.button-text, .example-before, .problem-before, .solution-before, .definition-before, .footnote-reference, .footnote-reference a, .footnote-number, .meaning-number, .equation-number, .view-math, .view-math a, .rule-before, .proof-before, .note-before{
+color: #369;
+font-weight: bold;
+}
+
+.name, .example-name, .rule-name{
+font-weight: bold;
+}
+
+div.toc{
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 17em;
+height: 100%;
+border-right: 1px solid black;
+background-color: white;
+font-family: Arial, helvetica, sans-serif;
+overflow: auto;
+}
+
+h1, #toc{
+margin: -25px 0 0 -19px;
+padding: 10px 0 15px 10px;
+border: 0px #fff solid;
+border-top-width: 1px;
+font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif;
+font-weight: bold;
+color: #fff;
+font-size: 1.75em;
+background-color: #69c;
+}
+
+#toc{
+margin: 0px;
+border-bottom-width: 2px;
+font-size: 1.4em;
+}
+
+#cnx_authorship{
+margin-bottom: 10px;
+}
+
+
+
+h2{
+color: #369;
+margin: 15px 0 0;
+border: 0px solid #369;
+border-bottom-width: 2px;
+border-right-width: 2px;
+font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif;
+font-weight: bold;
+}
+
+.section{
+margin: -10px 0px;
+padding: 5px 0px;
+border: 0px;
+}
+
+.section .section{
+margin-left: 36px;
+margin-bottom: 0px;
+}
+
+.section .section h2{
+color: #369;
+border: 0px solid #369;
+border-left-width: 2px;
+border-bottom-width: 2px;
+margin: 5px 0px;
+padding: 0px 0px 3px 5px;
+}
+
+.proof h2, .example h2, .problem h2, .solution h2, .statement h2{
+font-weight: normal; 
+border: 0px solid #369;
+border-bottom-width: 1px;
+}
+
+
+
+li.toc{
+list-style-type: none;
+margin: 0px 0px 0px 32px;
+padding: 0px;
+}
+
+table.list{
+margin: 10px 0px;
+}
+
+table.list tr td.name, .bullet{
+font-weight: bold;
+white-space: nowrap;
+padding: 3px 0px;
+}
+
+.para span.list .name{
+display: inline;
+}
+
+
+
+#cnx_discussion{
+padding: 10px 0;
+border: 0px #c90 solid;
+border-top-width: 1px;
+}
+
+#cnx_discussion ul{
+margin: -.5em 0 0;
+}
+
+#cnx_footer{
+margin-top: -30px;
+padding: 10px 0px;
+border: 0px #c90 solid;
+border-top-width: 1px;
+font-size: .65em;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+#cnx_people{
+padding-bottom: 10px;
+}
+
+#cnx_license{
+float: right;
+text-align: right;
+}
+
+#cnx_license p{
+width: 12em;
+}
+
+img{
+color: #fff;
+}
+
+
+
+.para{
+margin: 6px 0px;
+line-height: 1.4em;
+}
+
+.para .name{
+margin-bottom: 1px;
+}
+
+
+
+#cnx_abstract{
+margin: -40px 0px 30px;
+padding: 8px 0px;
+border: 0px #c90 solid;
+border-bottom-width: 1px;
+}
+
+.cnx_warning{
+color: #c00;
+border: 1px solid #c00;
+padding: .5em;
+background-color: #fee;
+margin-top: -20px;
+margin-bottom: 10px;
+}
+
+.cnx_warning a{
+color: #c00;
+}
+
+
+
+pre, code{
+font-family: courier, courier new, monospace;
+color: #060;
+font-style: normal;
+}
+
+code{
+display: inline;
+}
+
+pre{
+display: block;
+white-space: pre;
+text-align: left;
+line-height: 1em;
+}
+
+code blockquote, pre blockquote, .foreign blockquote, blockquote code, blockquote pre, blockquote .foreign, code cite, pre cite, cite code, cite pre{
+font-style: normal;
+}
+
+pre i, code i, i pre, i code{
+font-style: normal;
+font-weight: bold;
+}
+
+
+
+blockquote{
+font-style: italic;
+margin-left: 72px;
+margin-right: 72px;
+line-height: normal;
+}
+
+.quote-source, .term-source{
+color: #960;
+text-decoration: none;
+font-style: normal;
+font-weight: normal;
+}
+
+.quote-source-before, .quote-source-after, .term-source-after, .term-source-before{
+font-style: normal;
+font-weight: normal;
+}
+
+
+
+.example{
+margin: 15px 72px;
+padding: 10px;
+border: 1px solid #666;
+}
+
+.example .para, .statement .para{
+margin: 3px 0px;
+}
+
+.definition .example, .rule .example{
+margin: 3px 72px;
+padding: 5px 10px 0px;
+}
+
+.definition .example .para, .rule .example .para{
+margin: 3px 0px;
+}
+
+
+
+.exercise{
+margin: 10px 0px;
+}
+
+.problem{
+padding: 10px 0px;
+}
+
+.solution{
+padding: 5px 0px;
+margin-left: 36px;
+}
+
+.button-text{
+display: none;
+}
+
+
+
+a{
+color: #960;
+}
+
+.cnxn{
+color: #600;
+}
+
+
+
+.term{
+font-weight: bold;
+font-style: normal;
+display: inline;
+}
+
+.definition{
+margin: 10px 0px;
+}
+
+.meaning{
+margin: 5px 0px 5px 36px;
+padding: 2px 0px 2px;
+}
+
+
+
+pre i, code i{
+font-style: normal;
+font-weight: bold;
+}
+
+.term code i, code .term i, code i .term, .term i code, .term pre i, pre .term i, pre i .term, .term i pre{
+text-decoration: underline;
+}
+
+cite i, cite .foreign, i cite, i .foreign, .foreign cite, .foreign i, blockquote cite, blockquote i, blockquote .foreign, blockquote cite i .foreign, blockquote cite .foreign i, blockquote i cite .foreign, blockquote i .foreign cite, blockquote .foreign i cite, blockquote .foreign cite i{
+font-style: normal;
+}
+
+.foreign, cite i .foreign, cite .foreign i, i cite .foreign, i .foreign cite, .foreign cite i, .foreign i cite, blockquote cite i, blockquote cite .foreign, blockquote i cite, blockquote i .foreign, blockquote .foreign cite, blockquote .foreign i{
+font-style: italic;
+}
+
+
+
+.equation{
+margin: 5px 0px 10px;
+}
+
+.equation-number{
+float: right;
+top: 5px;
+}
+
+.equation .name{
+margin-bottom: 5px;
+}
+
+
+
+table.figure{
+text-align: center;
+margin-top: 15px;
+margin-bottom: 15px;
+}
+
+.inner-figure{
+border: 0px #333 solid;
+border-top-width: 1px;
+border-bottom-width: 1px;
+padding: 10px 0px;
+}
+
+div.subfigure .name{
+display: block;
+margin-bottom: 5px;
+text-align: center;
+}
+
+table.figure table.subfigure, div.subfigure{
+text-align: center;
+}
+
+.caption{
+color: #333;
+padding-top: 5px;
+}
+
+div.subfigure .caption{
+margin-bottom: 15px;
+}
+
+.caption-before{
+font-weight: bold;
+}
+
+
+
+table.table, table.old-table{
+margin: 5px 0px;
+}
+
+
+
+.note-before{
+color: #c00;
+}
+
+.note{
+padding: 7px;
+margin: 2px 72px;
+border: 1px solid #666;
+}
+
+
+
+.rule{
+margin: 10px 0px;
+}
+
+.statement{
+margin: 5px 5px 0px 36px;
+}
+
+.proof{ 
+margin: 2px 0px 2px 36px;
+}
+
+
+
+#cnx_about_history #cnx_main p{
+margin: -30px 0 1em;
+}
+
+#cnx_about_history .cnx_name{
+font-weight: bold;
+color: #600;
+}
+
+#cnx_about_history hr{
+margin: 20px 0;
+}
+
+#cnx_about_history pre{
+margin: 5px 0;
+}
+
+
+
+#cnx_course_content{
+position: absolute;
+top: 50px;
+left: 0;
+width: 271px;
+background-color: white;
+border: 0 solid #497caf;
+border-left-width: 1px;
+border-right-width: 2px;
+}
+
+#cnx_course_start{
+font-size: 1.1em;
+font-weight: bold;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+margin: -10px 0 .8em;
+}
+
+#cnx_course_website{
+margin: -10px 0 .8em;
+}
+
+#cnx_course_contributors, #cnx_course_description{
+margin: .8em 0 0;
+}
+
+#cnx_course_content ul{
+font-size: .9em;
+}
+
+#cnx_course_content a{
+font-size: .8em;
+}
+
+
+
+.feedback{
+margin-left: 36px;
+font-weight: bold;
+color: #060;
+}
+
+.hint, .feedback, hr {
+display: none;
+}
+
+.hint{
+font-style: italic;
+}
+
+input{
+display: inline;
+border-width: 1px;
+border-style: solid;
+border-color: #000;
+background-color: #c90;
+}
+
+/* */

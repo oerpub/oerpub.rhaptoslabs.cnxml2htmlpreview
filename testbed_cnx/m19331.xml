@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:bib="http://bibtexml.sf.net/" xmlns:q="http://cnx.rice.edu/qml/1.0" id="new" module-id="" cnxml-version="0.6">
+  <title>Functions Guide -- "The Real World"</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4">
+  <!-- WARNING! The 'metadata' section is read only. Do not edit below.
+       Changes to the metadata section in the source will not be saved. -->
+  <md:content-id>m19331</md:content-id>
+  <md:title>Functions Guide -- "The Real World"</md:title>
+  <md:version>1.2</md:version>
+  <md:created>2008/11/12 14:47:00 US/Central</md:created>
+  <md:revised>2009/04/15 14:11:44.590 GMT-5</md:revised>
+  <md:authorlist>
+    <md:author id="kennyfelder">
+        <md:firstname>Kenny</md:firstname>
+        <md:surname>Felder</md:surname>
+        <md:fullname>Kenny Felder</md:fullname>
+        <md:email>KFelder@RaleighCharterHS.org</md:email>
+    </md:author>
+  </md:authorlist>
+  <md:maintainerlist>
+    <md:maintainer id="kennyfelder">
+        <md:firstname>Kenny</md:firstname>
+        <md:surname>Felder</md:surname>
+        <md:fullname>Kenny Felder</md:fullname>
+        <md:email>KFelder@RaleighCharterHS.org</md:email>
+    </md:maintainer>
+  </md:maintainerlist>
+  <md:license href="http://creativecommons.org/licenses/by/2.0/"/>
+  <md:licensorlist>
+    <md:licensor id="kennyfelder">
+        <md:firstname>Kenny</md:firstname>
+        <md:surname>Felder</md:surname>
+        <md:fullname>Kenny Felder</md:fullname>
+        <md:email>KFelder@RaleighCharterHS.org</md:email>
+    </md:licensor>
+  </md:licensorlist>
+  <md:keywordlist>
+    <md:keyword>algebra</md:keyword>
+    <md:keyword>functions</md:keyword>
+    <md:keyword>teacher's guide</md:keyword>
+  </md:keywordlist>
+  <md:subjectlist>
+    <md:subject>Mathematics and Statistics</md:subject>
+  </md:subjectlist>
+  <md:abstract>The teacher's guide to real world problems using functions.</md:abstract>
+  <md:language>en</md:language>
+  <!-- WARNING! The 'metadata' section is read only. Do not edit above.
+       Changes to the metadata section in the source will not be saved. -->
+</metadata>
+  <content>
+    <para id="delete_me">Begin by going over the homework.  There are two key points to bring out, which did not come up in class yesterday.</para><para id="element-591">1. If two functions always give the same answer, we say they are equal.  This just cannot be stressed enough.  Put this on the board:</para><para id="element-207"><m:math>
+<m:mn>3</m:mn>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>5</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>3</m:mn>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>15</m:mn>
+</m:math></para><para id="element-462">They’ve all seen this.  Most of them know it is the “distributive property.”  But do they know what it <emphasis>means</emphasis>?  Explain it very carefully.  <m:math>
+<m:mn>3</m:mn>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>5</m:mn>
+<m:mo>)</m:mo>
+</m:math> is a function that says “subtract 5, then multiply by 3.”  <m:math>
+<m:mn>3</m:mn>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>15</m:mn>
+<m:mo>)</m:mo>
+</m:math> is a function that says “multiply by 3, then subtract 15.”  They are very different processes!  But we say they are “equal” because no matter what number you plug in, they yield the same answer.  So in the function game, there is no possible question you could ask that would tell you if the person is doing “subtract 5, then multiply by 3” or “multiply by 3, then subtract 5.”  Have the class give you a few numbers, and show how it works—for negative numbers, fractions, zero, <emphasis>anything</emphasis>.</para><para id="element-932">2. The last problem on the homework brings up what I call the “rule of consistency.”  It is perfectly OK for a function to give the same answer for different questions.  (For instance, <m:math>
+<m:msup>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:math> turns both 3 and -3 into 9.)  But it is <emphasis>not</emphasis> OK to give different answers to the <emphasis>same</emphasis> question.  That is, if a function turns a 3 into a 9 once, then it will <emphasis>always</emphasis> turn a 3 into a 9.</para><para id="element-101">Once those two points are very clearly made, and all questions answered, you move on to today’s work.  Note that there is no “in-class assignment” in the student book: this is a day for interacting with the students.</para><para id="element-952">Remind them that a function is simply a process—any process—that takes one number in, and spits a different number out.  Then explain that functions are so important because they model relationships in the real world, where one number <emphasis>depends</emphasis> on a different number.  Give them a few examples like the following—no math, just a verbal assertion that one number depends on another:</para><list id="element-325" list-type="bulleted"><item>The number of toes in class depends on the number of feet in class.</item>
+<item>Which, in turn, depends on the number of people in class.</item>
+<item>The number of points you make in basketball depends on how many baskets you make.</item>
+<item>The amount I pay at the pump depends on the price of gas.</item></list><para id="element-960">Have them brainstorm in pairs (for 1-2 minutes at most) to come up with as many other examples as they can.  Since this is the first “brainstorming” exercise in class, you may want to take a moment to explain the concept.  <emphasis>The goal of brainstorming is quantity, not quality</emphasis>.  The object is to come up with as many examples as you can, no matter how silly.  But although they may be silly, they must in this case be <emphasis>valid</emphasis>.  “The color of your shirt depends on your mood” is not a function, because neither one is a number.  “The number of phones in the class depends on the number of computers” is not valid, because it doesn’t.  By the end of a few minutes of brainstorming and a bit more talk from you, they should be able to see how easy it is to find numbers that depend on other numbers.</para><para id="element-306">Then—after the intuitive stuff—introduce formal functional notation.  Suppose you get two points per basket.  If we let <m:math>
+<m:mi>p</m:mi>
+</m:math> represent the number of points, and <m:math>
+<m:mi>b</m:mi>
+</m:math> represent the number of baskets, then <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>2</m:mn>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+</m:math>.  If we say <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>c</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>2</m:mn>
+<m:mi>c</m:mi>
+</m:math> that is not a different function, because they are both ways of expressing the idea that “<m:math>
+<m:mi>p</m:mi>
+</m:math> doubles whatever you give it” (relate to the function game).  So if you give it a 6, you get <m:math>
+<m:mn>12</m:mn>
+<m:mo>:</m:mo>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>12</m:mn>
+</m:math>.  If you give it a duck, you get two ducks: <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mtext>duck</m:mtext>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>2</m:mn>
+<m:mtext>ducks</m:mtext>
+</m:math>.  It doubles whatever you give it.</para><list id="element-37" list-type="bulleted"><title>Key points to stress:</title><item>This notation, <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+</m:math>, does <emphasis>not </emphasis>indicate that <m:math>
+<m:mi>p</m:mi>
+</m:math> is being multiplied by <m:math>
+<m:mi>b</m:mi>
+</m:math>.  It means that <m:math>
+<m:mi>p</m:mi>
+</m:math> <emphasis>depends on </emphasis><m:math>
+<m:mi>b</m:mi>
+</m:math>, or (to express the same thing a different way), <m:math>
+<m:mi>p</m:mi>
+</m:math> <emphasis>is a function of </emphasis><m:math>
+<m:mi>b</m:mi>
+</m:math>.</item>
+<item>You can plug any numbers you want into this formula.  <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>12</m:mn>
+</m:math> meaning that if you get 6 baskets, you make 12 points. <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>2</m:mn>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mn>2</m:mn>
+</m:mfrac>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>5</m:mn>
+</m:math>  is valid mathematically, but in the “real world” you can’t make <m:math>
+
+<m:mn>2</m:mn>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mn>2</m:mn>
+</m:mfrac>
+
+</m:math> baskets.  Remind them that <m:math>
+<m:mi>p</m:mi>
+</m:math> is a <emphasis>function</emphasis>—a process—“double whatever you are given.”</item>
+<item>Also introduce at this point the terminology of the <emphasis>dependent</emphasis> and <emphasis>independent</emphasis> variables.</item>
+<item>Stress clearly defining variables: not “<m:math>
+<m:mi>b</m:mi>
+</m:math> is baskets” but “<m:math>
+<m:mi>b</m:mi>
+</m:math> is the number of baskets you make.”  (“Baskets” is not a <emphasis>number</emphasis>.)</item>
+<item>Finally, talk about how we can use this functional notation to ask questions.  The question “How many points do I get if I make 4 baskets?” is expressed as “What is <m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>4</m:mn>
+<m:mo>)</m:mo>
+</m:math>?”  The question “How many baskets do I need in order to get 50 points?” is expressed as “<m:math>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>50</m:mn>
+</m:math>, solve for <m:math>
+<m:mi>b</m:mi>
+</m:math>.”</item>
+</list><para id="element-238">For the rest of class—whether it is five minutes or twenty—the class should be making up their own functions.  The pattern is this:</para><list id="element-410" list-type="enumerated"><item>Think of a situation where one number depends on another.  (“Number of toes depends on number of feet.”)</item>
+<item>Clearly label the variables.  (<m:math>
+<m:mi>t</m:mi>
+</m:math>=number of toes, <m:math>
+<m:mi>f</m:mi>
+</m:math>=number of feet.)</item>
+<item>Write the function that shows how the <emphasis>dependent</emphasis> variable depends on the <emphasis>independent</emphasis> variable <m:math>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>5</m:mn>
+<m:mi>f</m:mi>
+<m:mo>.</m:mo>
+<m:mo>)</m:mo>
+</m:math></item>
+<item>Choose an example number to plug in.  (If there are 6 feet, 
+<m:math>
+<m:mi>t</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>5</m:mn>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>30</m:mn>
+</m:math>.  30 toes.)
+</item>
+</list><para id="element-172">Encourage them to think of problems where the relationship is a bit more complicated than a simple multiplication.  (“The area of a circle depends on its radius, <m:math>
+<m:mi>A</m:mi>
+<m:mo>(</m:mo>
+<m:mi>r</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>π</m:mn>
+<m:msup>
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:math>”).</para><para id="element-286"><title>Homework:</title>“Homework: Functions in the Real World.”
+</para><para id="element-330">When going over this homework the next day, one question that is almost <emphasis>sure</emphasis> to come up is #4g: <m:math>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mo>)</m:mo>
+</m:math>.  Of course, I’m building up to the idea of composite functions, but there is no need to mention that at this point.  Just remind them that <m:math>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mtext>anything</m:mtext>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:msup>
+<m:mtext>anything</m:mtext>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mtext>anything</m:mtext>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:math>.  So the answer to (e) is <m:math>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mtext>spaghetti</m:mtext>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:msup>
+<m:mtext>spaghetti</m:mtext>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mtext>spaghetti</m:mtext>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:math>.  And the answer to this one is 
+<m:math>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:msup>
+<m:mo>)</m:mo>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:math>.  Of course, this can (and should) be simplified, but the point right now is to stress that idea that you can plug anything you want in there.</para>  
+  </content>
+  
+</document>

@@ -1,0 +1,36 @@
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   See /stylesheets/README.txt for an explanation of
+   any CSS browser detection hacks used in this file
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* 
+#edit-main in case they're in the authoring interface
+#cnx_main in case a user creates an id #edit-main for one of their elements
+*/
+
+#edit-main #cnx_main {     
+  font-size: 1.2em;
+}
+
+#edit-main #cnx_main, #edit-main #cnx_main h2, #edit-main #cnx_main blockquote{
+  font-family: helvetica, arial, sans-serif;
+}             
+
+#edit-main #cnx_main .eipXMLEditor, #edit-main #cnx_main blockquote, #edit-main #cnx_main math[display="block"], #edit-main #cnx_main math[mode="display"]{
+  font-size: 100%;
+}
+
+#edit-main #cnx_main code, #edit-main #cnx_main pre{                 
+  background-color: transparent;
+  border-width: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+#edit-main #cnx_main .link{             
+text-decoration: underline;
+}
+
+#edit-main #cnx_main math, #edit-main #cnx_main .equation math *{
+  font-family: CMSY10,Symbol,Times,Lucida Sans Unicode,MT Extra,Math1,Math2,Math3,Math4,Math5,serif;
+}                          

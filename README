@@ -1,0 +1,17 @@
+oerpub.rhaptoslabs.cnxml2htmlpreview
+------------------------------------
+
+HTML preview of CNXML. Renders CNXML like on http://cnx.org .
+
+
+Run with:
+
+old, slow version:
+
+    python testbed_cnxml.py
+
+or
+
+new, much faster version:
+
+    python testbed_cnxml2.py

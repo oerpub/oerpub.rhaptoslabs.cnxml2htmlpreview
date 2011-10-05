@@ -1,0 +1,173 @@
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   See /stylesheets/README.txt for an explanation of
+   any CSS browser detection hacks used in this file
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* ####################### SIDEBAR and its Buttons ######################## */
+
+#cnx_sidebar{ 
+position: absolute;
+top: 62px;
+left: 0;
+width: 184px;
+background-color: #fcfdec;
+border: 0 solid #bb9;
+border-right-width: 1px;
+font-size: .95em;
+margin-top: -1px;
+}
+
+* html #cnx_sidebar{
+width: 185px;
+}
+
+* html>body #cnx_sidebar{
+width: 184px;
+}
+
+@media all{* html #cnx_sidebar{z-index: -1;}}
+
+#cnx_sidebar a{
+color: #665;
+}
+
+#cnx_sidebar a:hover{
+text-decoration: none;
+color: #853;
+}
+
+/* ####################### Sidebar Contents ######################## */
+
+.cnx_division{
+padding: 0 10px .25em;
+}
+
+.cnx_division ul{
+padding: 0;
+margin: 0 0 1em;
+}
+
+.cnx_division li{
+list-style-type: none;
+display: block;
+margin: 0;
+padding: .2em 0 .2em 12px;
+font-size: .75em;
+background-repeat: no-repeat;
+background-image: url("sidebar-bullet.png");
+background-position: .3em .55em;
+}
+
+@media all{
+* html #cnx_sidebar .cnx_division li a{
+overflow: hidden;
+text-overflow: ellipsis;
+width: 152px;
+}
+}
+
+* html>body .cnx_division li{
+background-position: .3em .4em; 
+}
+
+@media all{
+* html #cnx_sidebar .cnx_division .links li a{
+width: 131px;
+}
+}
+
+.cnx_division .links li{
+background-position: 12px .4em;
+}
+
+.cnx_division .links li span{
+width: 12px;
+padding-right: 6px;
+visibility: hidden;
+}
+
+li.strength1{background-image: url("strength1.gif");}
+li.strength2{background-image: url("strength2.gif");}
+li.strength3{background-image: url("strength3.gif");}
+li.strength4{background-image: url("strength4.gif");}
+li.strength5{background-image: url("strength5.gif");}
+
+.cnx_division h3{
+margin: 0 -10px .5em;
+padding: .5em 10px .4em;
+background-color: #ddb;
+color: #554;
+font-size: .8em;
+border: 0 solid #bb9;
+border-top-width: 1px;
+border-bottom-width: 1px;
+text-transform: uppercase;
+letter-spacing: .1em;
+font-family: urw gothic l, tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+@media all{
+* html #cnx_sidebar h3{
+overflow: hidden;
+text-overflow: ellipsis;
+width: 184px;
+}
+}
+
+.cnx_division h4{
+margin: 1em 0 .2em;
+padding: 0;
+font-size: .8em;
+color: #332;
+font-family: georgia, batang, bookman old style, book antiqua, times, times new roman, serif;
+}
+
+@media all{
+* html #cnx_sidebar h4{
+overflow: hidden;
+text-overflow: ellipsis;
+width: 164px;
+}
+}
+
+#cnx_style_chooser a{
+background-position: right top;
+background-repeat: no-repeat;
+display: block;                
+padding-right: 20px;         
+}
+
+/* IE needs an image to "replace" on hover */
+* html #cnx_style_chooser a{
+background-image: url("/stylesheets/fake-transparent-background.gif");
+}
+
+#cnx_style_chooser .sky a:hover{background-image: url("/cnx-styles/sky-icon.png")}
+#cnx_style_chooser .desert a:hover{background-image: url("/cnx-styles/desert-icon.png")}
+#cnx_style_chooser .charcoal a:hover{background-image: url("/cnx-styles/charcoal-icon.png")}
+#cnx_style_chooser .playland a:hover{background-image: url("/stylesheets/playland-icon.png")}
+#cnx_style_chooser .plone a:hover{background-image: url("/stylesheets/plone-icon.png")}
+
+li.cnx_extra{
+background-image: none;
+}
+
+#cnx_sidebar .cnx_extra a{
+color: #853;
+font-family: georgia, batang, bookman old style, book antiqua, times, times new roman, serif;
+font-weight: bold;
+}
+
+/* ###################### Print link ######################## */
+
+#cnx_print{
+position: absolute;
+right: 10px;
+top: 69px;
+font-size: .75em;
+font-weight: bold;
+}
+
+#cnx_print a{
+color: #eac47a;
+}

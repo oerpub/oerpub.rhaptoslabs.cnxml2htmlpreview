@@ -1,0 +1,726 @@
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   See /stylesheets/README.txt for an explanation of
+   any CSS browser detection hacks used in this file
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* ======= DOCUMENT TOP ======= */
+
+#cnx_logo a{
+width: 202px;
+height: 65px;
+background-image: url("logo.gif");
+background-repeat: no-repeat;
+background-position: 5px 2px;
+float: left;
+}      
+
+#cnx_logo span{       
+display: none;
+}
+
+#cnx_global{
+background: #369;
+position: absolute;
+top: 0;
+left: 0;
+height: 64px;
+border: 0 solid #275a8d;
+border-bottom-width: 1px;
+font-size: 1.2em;
+}
+
+* html #cnx_global{
+height: 65px;
+}
+
+#cnx_global[id]{
+width: 100%;
+}
+
+@media all{
+* html #cnx_global{
+overflow: hidden;
+text-overflow: ellipsis;
+}
+}
+
+#cnx_global_links{
+text-align: right;
+color: #def;          
+font-size: .75em;
+margin: 10px 1em 0 0;
+text-transform: capitalize;
+}
+
+#cnx_global_links a{
+color: #cde;
+font-size: .85em;
+text-decoration: none;
+}            
+
+#cnx_global_links a:hover{   
+text-decoration: underline;  
+}
+
+#cnx_search form{
+display: inline;
+}
+
+#cnx_search{
+float: right;
+margin: 10px .5em 0;
+font-size: .85em;
+}
+
+* html #cnx_search{
+margin-left: .2em;
+margin-right: .2em;
+}
+
+#cnx_search input{
+font-size: .85em;
+border: 1px solid #abd;
+}
+
+* html #cnx_search input{
+font-size: .75em;
+}
+
+#cnx_search .cnx_text{
+width: 9em;
+border-left-color: #246;
+border-top-color: #246;
+}
+
+#cnx_search .cnx_button{
+padding: 0;
+background-color: #497caf;
+color: white;
+border-right-color: #246;
+border-bottom-color: #246;
+margin: 0 0 0 .25em;
+}
+
+* html>body #cnx_search .cnx_button{
+padding: 0 .5em;
+}
+
+/* ======= SOME BASIC ELEMENTS ======= */
+
+p{
+margin: 0;
+}
+
+img{
+border: 0;
+}
+
+a{ 
+color: #960;  
+}
+
+.cnx_before{
+font-weight: bold;
+}
+
+body{
+margin: 0;
+font-family: helvetica, arial, sans-serif;
+font-size: .9em;
+background-color: #fff;
+background-repeat: repeat-y;
+background-image: url("blue-border.gif");
+background-position: -285px 0;
+}
+
+#cnx_module{
+background-position: -120px 0;
+}
+
+#cnx_course{
+background-position: right top;
+}
+
+div.toc{
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 17em;
+height: 100%;
+border-right: 1px solid black;
+background-color: white;
+font-family: Arial, helvetica, sans-serif;
+overflow: auto;
+}
+
+li.toc{
+list-style-type: none;
+margin: 0 0 0 32px;
+padding: 0;
+}
+
+/* ======= HEADER ======== */
+
+h1, #toc{
+background-color: #69c;
+color: #fff;
+margin: 0;
+padding: .25em 3.3em .25em 15px;
+font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif;
+font-size: 1.75em;
+font-variant: normal;
+font-weight: bold;
+font-stretch: normal;
+letter-spacing: -1px;
+text-align: left;
+}
+
+#toc{
+border: 0 solid #c90;
+border-bottom-width: 2px;
+font-size: 1.4em;
+}
+
+#cnx_abstract{
+margin: 0 15px;
+padding: 10px 0; 
+border: 0 solid #c90;
+border-bottom-width: 1px;
+clear: left;
+}
+
+#cnx_authorship{
+background-color: #69c;
+color: #fff;
+padding: .25em 15px 1em;
+font-size: .75em;
+border: 0 solid #c90;
+border-bottom-width: 1px;
+margin: 0;
+}
+
+#cnx_parent{
+margin-top: .5em;
+display: block;
+}
+
+.cnx_in_course #cnx_authorship{
+border-bottom-width: 0;
+}
+
+#cnx_authorship a{
+color: #fff;
+text-transform: uppercase;
+}
+
+/* =========== PAGE LAYOUT =========== */
+
+#cnx_about_history #cnx_header, #cnx_about_history #cnx_main{
+margin-left: 15px;
+}
+
+#cnx_about_history #cnx_footer{
+margin-left: 30px;
+}
+
+#cnx_module #cnx_header, #cnx_module #cnx_main, #cnx_discussion{
+margin-left: 180px;
+}
+
+#cnx_module #cnx_footer{
+margin-left: 195px;
+}
+
+#cnx_course #cnx_header, #cnx_course #cnx_main{
+margin-right: 300px;
+}
+
+#cnx_course #cnx_footer{
+margin-right: 315px;
+}
+
+#cnx_main{
+padding: 1em 15px;
+}
+
+/* insert "Holly Hack" to prevent the "Magik Creeping Text" bug in IE */
+* html #cnx_main{ 
+height: 1px;
+}
+
+#cnx_header{
+margin-top: 65px;
+}
+
+/* ========== DISCUSSION SECTION ========= */
+
+#cnx_discussion{
+margin: 1.5em 15px 0 195px;
+padding: .75em 0 0;
+border: 0 solid #c90;
+border-top-width: 1px;
+clear: both;
+}
+
+#cnx_discussion ul{
+margin-top: 0;
+margin-bottom: 0;
+}
+
+#cnx_discussion li{
+padding: .1em 0;
+}
+
+#cnx_discussion ul span{
+font-size: .75em;
+font-style: italic;
+}
+
+#cnx_discussion .cnx_extra{
+list-style-type: none;
+font-style: italic;
+}
+
+#cnx_discussion h4{
+margin-bottom: .5em;
+font-size: .95em;
+}
+
+/* ======= FOOTER ======== */
+
+.cnx_previous_next.cnx_bottom{
+padding: 1em 15px 1em 195px;
+text-align: center;
+}
+
+@media all{* html .cnx_previous_next.cnx_bottom{
+width: 100%;
+}}
+
+.cnx_previous_next.cnx_bottom a{
+vertical-align: top;
+width: 31%;
+float: left;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_previous{
+text-align: left;
+margin-right: 3%;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_toc{
+margin-right: 3%;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_next{
+text-align: right;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_extra{
+visibility: hidden;
+}
+
+#cnx_footer{
+font-size: .75em;
+margin: 3em 15px 0;
+padding: 1em 0 1.5em;
+border: 0 #c90 solid;
+border-top-width: 1px;
+}
+
+#cnx_license_logo{
+float: left;
+padding: 0 10px .5em 0;
+}
+
+#cnx_license, #cnx_metadata_links{
+margin: 0 0 .5em;
+}
+
+#cnx_license{
+padding-left: 98px;
+}
+
+#cnx_license a{
+white-space: nowrap;
+}
+
+#cnx_updated{
+font-style: italic;
+margin-top: 1.5em;
+clear: both;
+}
+
+/* ========== WARNINGS ========= */
+
+.cnx_warning a{
+color: #c00;
+}
+
+.cnx_warning{
+color: #c00;
+margin: 15px;
+border: 1px solid #c00;
+padding: .5em;
+background: #fee;
+font-size: .95em;
+font-family: times new roman, times, serif;
+}
+
+/* ========== TABLE ========== */
+
+td, th{
+padding: 3px;   
+font-size: .9em;  
+}
+
+@media ScReEn{
+tr>td, tr>th{
+font-size: 1em;
+}              
+}
+
+/* ======== ABOUT-HISTORY STUFF ======== */
+
+#cnx_about_history #cnx_main p{
+margin: .5em 0 1.5em;
+}
+
+#cnx_about_history table{
+margin: 1em 0;
+}
+
+#cnx_about_history h2{
+margin-top: 1.5em;
+}
+
+#cnx_about_history td{
+font-size: .9em;
+padding: .2em .5em .2em 0;
+}
+
+#cnx_about_history .cnx_name{
+font-weight: bold;
+color: #600;
+}
+
+#cnx_about_history pre{
+font-size: .95em;
+margin: 0;
+white-space: -moz-pre-wrap; /* Gecko */
+white-space: -pre-wrap;     /* Opera 4-6 */
+white-space: -o-pre-wrap;   /* Opera 7 */
+white-space: pre-wrap;      /* CSS3, for when the browsers support it */
+word-wrap: break-word;      /* IE 5.5+, though it doesn't work in ours because our <pre>s are in <td>s */
+}
+
+#cnx_about_history .cnxn{
+font-size: .9em;
+}
+
+#cnx_about_history hr{
+height: 1px;
+color: #c90;
+background-color: #c90;
+margin: .6em 0;
+border: 0;
+}
+
+* html #cnx_about_history hr{
+margin: 0;
+}
+
+#cnx_cite_section h5{
+margin-bottom: 0;
+margin-left: 1.5em;
+}
+
+#cnx_cite_section .cnx_cite{
+margin-left: 3em !important;
+}
+
+/* ====== COURSE PAGES (non-module) ========= */
+
+#cnx_course_start, #cnx_course_website{
+font-size: 1.2em;
+font-weight: bold;           
+margin: 0 0 1em;
+}
+
+#cnx_course_website{
+font-size: 1em;
+}
+
+#cnx_course_contributors, #cnx_course_description{
+margin: 1em 0;
+}
+
+#cnx_instructor, #cnx_course_authors, #cnx_institution, #cnx_course_code, #cnx_course_description, #cnx_course_contributors{
+margin-left: 36px;
+}
+
+#cnx_instructor .cnx_before, #cnx_course_authors .cnx_before, #cnx_institution .cnx_before, #cnx_course_code .cnx_before, #cnx_course_description .cnx_before, #cnx_course_contributors .cnx_before{
+margin-left: -36px;
+}
+
+#cnx_course_content{
+background: white;
+width: 275px;
+position: absolute;
+top: 65px;
+right: 0;
+margin: 0;
+padding: 0 10px 1em;
+}
+
+* html #cnx_course_content{
+width: 295px;
+}
+
+#cnx_course_content h4{
+margin-left: 1em;
+}
+
+.cnx_division ul ul{
+margin-left: 1em;
+}
+
+#cnx_course_content li{
+padding-top: .15em;
+padding-bottom: .15em;
+background-position: .3em .6em;
+}
+
+#cnx_course_content ul{
+font-size: .8em;
+}
+
+#cnx_course_content ul *, * html #cnx_course_content ul *{
+font-size: 1em;
+}
+
+/* ======= QML ======== */
+
+textarea, form{
+display: block;  
+margin: 10px 0 0;
+}
+
+/* ====================== SIDEBAR BASICS =================== */
+
+#cnx_sidebar{
+position: absolute;
+top: 65px;
+left: 0;
+margin: 0 15px 15px 0;
+width: 175px;
+background-color: white;
+border: 0 solid #497caf;
+border-bottom-width: 1px;
+border-right-width: 5px;
+}
+
+@media all{* html #cnx_sidebar{z-index: -1;}}
+
+* html #cnx_sidebar{
+width: 180px;
+}
+
+* html>body #cnx_sidebar{
+width: 175px;
+}
+
+#cnx_whole_enchilada #cnx_sidebar, #cnx_whole_enchilada #cnx_global{
+left: 14em;
+left: 180px;
+}
+
+* html #cnx_whole_enchilada #cnx_sidebar, * html #cnx_whole_enchilada #cnx_global{
+left: 0;
+}
+
+/* ============== SIDEBAR and COURSE PAGE DIVISIONS ============= */
+
+.cnx_division{
+padding: 0 10px .25em;
+}
+
+.cnx_division ul{
+padding: 0;
+margin: 0 0 1em;
+}
+
+.cnx_division li{
+list-style-type: none;
+display: block;
+margin: 0;
+padding: .3em 0 .3em 12px;
+font-size: .75em;
+line-height: 1.25em;
+background-image: url("sidebar-bullet.png");
+background-position: .2em .7em;
+background-repeat: no-repeat;
+}
+
+@media all{
+* html #cnx_sidebar .cnx_division li a{
+overflow: hidden;
+text-overflow: ellipsis;
+width: 143px;
+}
+}
+
+@media all{
+* html #cnx_sidebar .cnx_division .links li a{
+width: 122px;
+}
+}
+
+.cnx_division .links li{
+background-position: 12px 5px;
+}
+
+.cnx_division .links li span{
+width: 12px;
+padding-right: 6px;
+visibility: hidden;
+}
+
+li.strength1{background-image: url("strength1.gif");}
+li.strength2{background-image: url("strength2.gif");}
+li.strength3{background-image: url("strength3.gif");}
+li.strength4{background-image: url("strength4.gif");}
+li.strength5{background-image: url("strength5.gif");}
+
+.cnx_division h3{
+margin: 0 -10px .5em;
+padding: .45em 10px;
+background-color: #497caf;
+color: white;
+font-size: .85em;
+font-family: tahoma, verdana, helvetica, arial, sans-serif; 
+border: 0 solid #c90;
+border-bottom-width: 1px;
+text-transform: uppercase;
+}
+
+@media all{
+* html #cnx_sidebar h3{
+overflow: hidden;
+text-overflow: ellipsis;
+width: 175px;
+}
+}
+
+.cnx_division h4{
+margin: 1em 0 .2em;
+padding: 0;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+font-size: .85em;
+}
+
+@media all{
+* html #cnx_sidebar h4{
+overflow: hidden;
+text-overflow: ellipsis;
+width: 155px;
+}
+}
+
+#cnx_style_chooser a{
+background-position: right top;
+background-repeat: no-repeat;
+display: block;
+padding-right: 20px;
+}
+
+/* IE needs an image to "replace" on hover */
+* html #cnx_style_chooser a{
+background-image: url("/stylesheets/fake-transparent-background.gif");
+}
+
+#cnx_style_chooser .sky a:hover{background-image: url("/cnx-styles/sky-icon.png")}
+#cnx_style_chooser .desert a:hover{background-image: url("/cnx-styles/desert-icon.png")}
+#cnx_style_chooser .charcoal a:hover{background-image: url("/cnx-styles/charcoal-icon.png")}
+#cnx_style_chooser .playland a:hover{background-image: url("/stylesheets/playland-icon.png")}
+#cnx_style_chooser .plone a:hover{background-image: url("/stylesheets/plone-icon.png")}
+
+/* waiting on some javascript fixes 
+#cnx_style_chooser .cnx_selected a{
+color: #666;
+text-decoration: none;
+cursor: auto;
+}
+*/
+
+#cnx_sidebar li.cnx_extra{
+background-image: none;
+}
+
+#cnx_sidebar .cnx_extra a{
+color: #864;
+font-size: 1em;
+text-transform: uppercase;
+text-decoration: none;
+}
+
+#cnx_sidebar .cnx_extra a:hover{
+text-decoration: underline;
+}
+
+/* ================== PRINT (PDF) ================== */
+
+#cnx_print{
+position: absolute;
+right: 15px;
+top: 75px;
+}
+
+#cnx_whole_enchilada #cnx_print{
+right: 25px;
+}
+
+#cnx_print a{
+color: #def;
+font-size: .85em;
+font-weight: bold;
+}
+
+/* ================= PREVIOUS & NEXT (TOP OF PAGE) ================ */
+
+#cnx_header .cnx_previous_next{
+padding: 0 15px 1em;
+font-size: .8em;
+font-weight: bold;
+color: white;
+text-align: right;
+background-color: #69c;
+border: 0 solid #c90;
+border-bottom-width: 1px;
+display: none;
+}
+
+#cnx_header.cnx_in_course .cnx_previous_next{
+display: block;
+}
+
+#cnx_header .cnx_previous_next a{
+color: white;
+text-decoration: none;
+margin: 0 .3em;
+}
+
+#cnx_header .cnx_previous_next a:hover{
+text-decoration: underline;
+}
+
+#cnx_header .cnx_previous_next .cnx_previous{
+text-transform: uppercase;
+margin-left: 0;
+}
+
+#cnx_header .cnx_previous_next .cnx_next{
+text-transform: uppercase;
+margin-right: 0;
+}
