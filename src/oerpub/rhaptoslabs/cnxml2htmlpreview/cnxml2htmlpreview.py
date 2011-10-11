@@ -38,7 +38,8 @@ import libxslt
 #import magic
 
 #XHTML_ENTITIES = os.path.join('www', 'catalog_xhtml', 'catalog.xml')
-CNXML2HTML_XSL = os.path.join('www', 'cnxml_render.xsl')
+current_dir = os.path.dirname(__file__)
+CNXML2HTML_XSL = os.path.join(current_dir, 'www', 'cnxml_render.xsl')
 
 # Main method. Doing all steps for the HTMLSOUP to CNXML transformation
 def xsl_transform(content):
