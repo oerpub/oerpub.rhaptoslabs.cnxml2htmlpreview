@@ -36,6 +36,7 @@ setup(name='oerpub.rhaptoslabs.cnxml2htmlpreview',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'lxml2',
       ],
       entry_points="""
       # -*- Entry points: -*-
