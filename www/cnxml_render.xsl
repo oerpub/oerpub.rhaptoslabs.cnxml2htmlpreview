@@ -21,6 +21,9 @@
   <!-- Import our local translation keys -->
   <xsl:import href="cnxmll10n.xsl"/>
 
+  <!-- Marvin: Include variable settings. E.g. absolute paths to CSS & Mathjax which are written to the output HTML -->
+  <xsl:include href="settings.xsl"/>
+
   <!-- MathML support -->
   <xsl:include href="cnxmathmlc2p.xsl"/>
 
@@ -97,18 +100,41 @@
 
 	    <!-- Marvin: ns4 is needed for Netscape 4. Netscape 4 will not be supported -->
       <!-- <link rel="stylesheet" type="text/css" href="cnx-styles/sky/ns4.css"/> -->
-	    <link rel="stylesheet" title="Sky" type="text/css" href="cnx-styles/newlook/document.css"/>
+	    <link rel="stylesheet" title="Sky" type="text/css">
+	      <xsl:attribute name="href">
+	        <xsl:value-of select="concat($absolute_stylesheet_path, 'cnx-styles/newlook/document.css')"/>
+	      </xsl:attribute>
+	    </link>
 	    <!-- The extra space is because some browsers don't like script as an empty tag -->
-	    <script type="text/javascript" src="js/exercise.js"><xsl:text> </xsl:text></script>
-	    <script type="text/javascript" src="js/qml_1-0.js"><xsl:text> </xsl:text></script>
+	    <script type="text/javascript">
+	      <xsl:attribute name="src">
+	        <xsl:value-of select="concat($absolute_stylesheet_path, 'js/exercise.js')"/>
+	      </xsl:attribute>
+	      <xsl:text> </xsl:text>
+	    </script>
+	    <script type="text/javascript">
+	      <xsl:attribute name="src">
+	        <xsl:value-of select="concat($absolute_stylesheet_path, 'js/qml_1-0.js')"/>
+	      </xsl:attribute>
+	      <xsl:text> </xsl:text>
+	    </script>
 	    <xsl:if test="$toc">
-	      <script type="text/javascript" src="js/toc.js"><xsl:text> </xsl:text></script>
+	      <script type="text/javascript">
+	        <xsl:attribute name="src">
+	          <xsl:value-of select="concat($absolute_stylesheet_path, 'js/toc.js')"/>
+	        </xsl:attribute>
+	        <xsl:text> </xsl:text>
+	      </script>
 	    </xsl:if>
 
 	    <xsl:comment>****QML**** sets the feedback and hints to non-visible.</xsl:comment>
 
       <!-- add local MathJax -->
-      <script type="text/javascript" src="mathjax/MathJax.js">
+      <script type="text/javascript">
+        <xsl:attribute name="src">
+          <xsl:value-of select="concat($absolute_stylesheet_path, 'mathjax/MathJax.js')"/>
+        </xsl:attribute>
+        <xsl:text>
           MathJax.Hub.Config({
             	extensions: ["mml2jax-bugfix.js"],
             	menuSettings: {zoom:"Click"},
@@ -118,6 +144,7 @@
         	if(location.href.split("#").length != 1) {
           	MathJax.Hub.Register.StartupHook("End", function() {location.href = location.href; });
         	}
+        </xsl:text>
     	</script>
 
 	    <!-- Marvin: added body margins -->
@@ -142,7 +169,7 @@
             </xsl:message>
       -->
 
-          <span class = "cnx_before">Module by:</span>
+          <span class = "cnx_before">Module by: </span>
           <!-- Marvin: We need to use EXSLT nodeset because we cannot go through XML tree while processing str:tokenize  -->
 
           <xsl:variable name="metadata">
