@@ -1,0 +1,2 @@
+2011-10-12
+Added variable in www/settings.xsl for absolute file paths (CSS & Mathjax)
