@@ -162,78 +162,82 @@
 	      <h1 id = "cnx_content_title">
 	          <xsl:value-of select="cnx:document/cnx:title|cnx:module/cnx:title"/>
 	      </h1>
-	    <p id = "cnx_authorship">
-	    <!--
-          <xsl:message>
-              <xsl:value-of select="cnx:document/cnx:metadata/meta:actors/meta:person[@userid = 'jslate']"/>
-            </xsl:message>
-      -->
+	    <xsl:if test="cnx:document/cnx:metadata/meta:roles/meta:role[@type = 'author']">
+		    <p id = "cnx_authorship">
+		    <!--
+	          <xsl:message>
+	              <xsl:value-of select="cnx:document/cnx:metadata/meta:actors/meta:person[@userid = 'jslate']"/>
+	            </xsl:message>
+	      -->
 
-          <span class = "cnx_before">Module by: </span>
-          <!-- Marvin: We need to use EXSLT nodeset because we cannot go through XML tree while processing str:tokenize  -->
+	          <span class = "cnx_before">Module by: </span>
+	          <!-- Marvin: We need to use EXSLT nodeset because we cannot go through XML tree while processing str:tokenize  -->
 
-          <xsl:variable name="metadata">
-            <xsl:copy-of select="cnx:document/cnx:metadata"/>
-          </xsl:variable>
+	          <xsl:variable name="metadata">
+	            <xsl:copy-of select="cnx:document/cnx:metadata"/>
+	          </xsl:variable>
 
-          <!-- Marvin: Get fullname of authors -->
-          <xsl:for-each select="str:tokenize(cnx:document/cnx:metadata/meta:roles/meta:role[@type = 'author'], ' ')">
-            <xsl:variable name="author">
-              <xsl:value-of select="."/>
-            </xsl:variable>
-            <span class = "span">
-              <xsl:value-of select="exsl:node-set($metadata)/cnx:metadata/meta:actors/meta:person[@userid = $author]/meta:fullname"/>
-            </span>
-            <xsl:choose>
-              <xsl:when test="position() = last()">
-                <xsl:text>. </xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>, </xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:for-each>
-          <!-- Marvin: Get email of authors -->
-          <a>
-            <xsl:attribute name="class">cnx_email_author</xsl:attribute>
-            <xsl:attribute name="href">
-              <xsl:text>mailto:</xsl:text>
-		          <xsl:for-each select="str:tokenize(cnx:document/cnx:metadata/meta:roles/meta:role[@type = 'author'], ' ')">
-		            <xsl:variable name="author">
-		              <xsl:value-of select="."/>
-		            </xsl:variable>
-		            <xsl:value-of select="exsl:node-set($metadata)/cnx:metadata/meta:actors/meta:person[@userid = $author]/meta:email"/>
-		            <xsl:if test="position() != last()">
-		             <xsl:text>,</xsl:text>
-		            </xsl:if>
-		          </xsl:for-each>
-              <xsl:text>?cc=cnx@cnx.org&amp;subject=Feedback on Connexions module: </xsl:text>
-              <xsl:value-of select="cnx:document/cnx:metadata/meta:title"/>
-              <xsl:text>&amp;body=Feedback on Connexions module: </xsl:text>
-              <xsl:value-of select="cnx:document/cnx:metadata/meta:title"/>
-              <xsl:text> (HTML previewer)</xsl:text>
-            </xsl:attribute>
-            <xsl:attribute name="title">E-mail the authors of the module</xsl:attribute>
-            <xsl:text>E-mail the authors</xsl:text>
-          </a>
+	          <!-- Marvin: Get fullname of authors -->
+	          <xsl:for-each select="str:tokenize(cnx:document/cnx:metadata/meta:roles/meta:role[@type = 'author'], ' ')">
+	            <xsl:variable name="author">
+	              <xsl:value-of select="."/>
+	            </xsl:variable>
+	            <span class = "span">
+	              <xsl:value-of select="exsl:node-set($metadata)/cnx:metadata/meta:actors/meta:person[@userid = $author]/meta:fullname"/>
+	            </span>
+	            <xsl:choose>
+	              <xsl:when test="position() = last()">
+	                <xsl:text>. </xsl:text>
+	              </xsl:when>
+	              <xsl:otherwise>
+	                <xsl:text>, </xsl:text>
+	              </xsl:otherwise>
+	            </xsl:choose>
+	          </xsl:for-each>
+	          <!-- Marvin: Get email of authors -->
+	          <a>
+	            <xsl:attribute name="class">cnx_email_author</xsl:attribute>
+	            <xsl:attribute name="href">
+	              <xsl:text>mailto:</xsl:text>
+			          <xsl:for-each select="str:tokenize(cnx:document/cnx:metadata/meta:roles/meta:role[@type = 'author'], ' ')">
+			            <xsl:variable name="author">
+			              <xsl:value-of select="."/>
+			            </xsl:variable>
+			            <xsl:value-of select="exsl:node-set($metadata)/cnx:metadata/meta:actors/meta:person[@userid = $author]/meta:email"/>
+			            <xsl:if test="position() != last()">
+			             <xsl:text>,</xsl:text>
+			            </xsl:if>
+			          </xsl:for-each>
+	              <xsl:text>?cc=cnx@cnx.org&amp;subject=Feedback on Connexions module: </xsl:text>
+	              <xsl:value-of select="cnx:document/cnx:metadata/meta:title"/>
+	              <xsl:text>&amp;body=Feedback on Connexions module: </xsl:text>
+	              <xsl:value-of select="cnx:document/cnx:metadata/meta:title"/>
+	              <xsl:text> (HTML previewer)</xsl:text>
+	            </xsl:attribute>
+	            <xsl:attribute name="title">E-mail the authors of the module</xsl:attribute>
+	            <xsl:text>E-mail the authors</xsl:text>
+	          </a>
 
-          <!--
-          <span class = "span">John R. Slate</span>
-          ,
-          <span class = "span">Ana Rojas-LeBouef</span>
-          .
-          <a
-            class = "cnx_email_author"
-            href = "mailto:profslate@aol.com,amrojs@yahoo.com?cc=cnx@cnx.org&amp;subject=Feedback on Connexions module: Calculating Descriptive Statistics&amp;body=Feedback on Connexions module: Calculating Descriptive Statistics (http://cnx.org/content/m37276/latest/)"
-            title = "E-mail the authors of the module">E-mail the authors</a>
-          -->
-        </p>
-    <p id = "cnx_abstract">
-        <span class = "cnx_before">Summary:</span>
-        <span class = "span">
-          <xsl:value-of select="cnx:module/cnx:abstract|cnx:module/cnx:metadata/cnx:abstract|cnx:module/cnx:metadata/md:abstract|cnx:document/cnx:metadata/meta:abstract"/>
-        </span>
-    </p>
+	          <!--
+	          <span class = "span">John R. Slate</span>
+	          ,
+	          <span class = "span">Ana Rojas-LeBouef</span>
+	          .
+	          <a
+	            class = "cnx_email_author"
+	            href = "mailto:profslate@aol.com,amrojs@yahoo.com?cc=cnx@cnx.org&amp;subject=Feedback on Connexions module: Calculating Descriptive Statistics&amp;body=Feedback on Connexions module: Calculating Descriptive Statistics (http://cnx.org/content/m37276/latest/)"
+	            title = "E-mail the authors of the module">E-mail the authors</a>
+	          -->
+	        </p>
+	  </xsl:if>
+    <xsl:if test="cnx:module/cnx:abstract|cnx:module/cnx:metadata/cnx:abstract|cnx:module/cnx:metadata/md:abstract|cnx:document/cnx:metadata/meta:abstract">
+	    <p id = "cnx_abstract">
+	        <span class = "cnx_before">Summary:</span>
+	        <span class = "span">
+	          <xsl:value-of select="cnx:module/cnx:abstract|cnx:module/cnx:metadata/cnx:abstract|cnx:module/cnx:metadata/md:abstract|cnx:document/cnx:metadata/meta:abstract"/>
+	        </span>
+	    </p>
+	 </xsl:if>
 
 	      <!--
 	      <div id="about-links"> </div>

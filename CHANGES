@@ -1,2 +1,5 @@
+2011-10-13
+Authorlist and summary are now created dynamically. When no authors or summary is available do not create any in output HTML.
+
 2011-10-12
 Added variable in www/settings.xsl for absolute file paths (CSS & Mathjax)
