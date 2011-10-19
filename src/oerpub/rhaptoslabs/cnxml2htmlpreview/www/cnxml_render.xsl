@@ -102,26 +102,26 @@
       <!-- <link rel="stylesheet" type="text/css" href="cnx-styles/sky/ns4.css"/> -->
 	    <link rel="stylesheet" title="Sky" type="text/css">
 	      <xsl:attribute name="href">
-	        <xsl:value-of select="concat($absolute_stylesheet_path, 'cnx-styles/newlook/document.css')"/>
+	        <xsl:value-of select="concat($absolute_stylesheet_path, '/preview_css/cnx-styles/newlook/document.css')"/>
 	      </xsl:attribute>
 	    </link>
 	    <!-- The extra space is because some browsers don't like script as an empty tag -->
 	    <script type="text/javascript">
 	      <xsl:attribute name="src">
-	        <xsl:value-of select="concat($absolute_stylesheet_path, 'js/exercise.js')"/>
+	        <xsl:value-of select="concat($absolute_stylesheet_path, '/preview_css/js/exercise.js')"/>
 	      </xsl:attribute>
 	      <xsl:text> </xsl:text>
 	    </script>
 	    <script type="text/javascript">
 	      <xsl:attribute name="src">
-	        <xsl:value-of select="concat($absolute_stylesheet_path, 'js/qml_1-0.js')"/>
+	        <xsl:value-of select="concat($absolute_stylesheet_path, '/preview_css/js/qml_1-0.js')"/>
 	      </xsl:attribute>
 	      <xsl:text> </xsl:text>
 	    </script>
 	    <xsl:if test="$toc">
 	      <script type="text/javascript">
 	        <xsl:attribute name="src">
-	          <xsl:value-of select="concat($absolute_stylesheet_path, 'js/toc.js')"/>
+	          <xsl:value-of select="concat($absolute_stylesheet_path, '/preview_css/js/toc.js')"/>
 	        </xsl:attribute>
 	        <xsl:text> </xsl:text>
 	      </script>
@@ -132,7 +132,7 @@
       <!-- add local MathJax -->
       <script type="text/javascript">
         <xsl:attribute name="src">
-          <xsl:value-of select="concat($absolute_stylesheet_path, 'mathjax/MathJax.js')"/>
+          <xsl:value-of select="concat($absolute_stylesheet_path, '/preview_css/mathjax/MathJax.js')"/>
         </xsl:attribute>
         <xsl:text>
           MathJax.Hub.Config({
