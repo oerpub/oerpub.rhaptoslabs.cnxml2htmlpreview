@@ -1,0 +1,294 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Functions Guide -- "The Real World"</title>
+    <link rel="stylesheet" title="Sky" type="text/css" href="/preview_css/cnx-styles/newlook/document.css"/>
+    <script type="text/javascript" src="/preview_css/js/exercise.js"> </script>
+    <script type="text/javascript" src="/preview_css/js/qml_1-0.js"> </script>
+    <!--****QML**** sets the feedback and hints to non-visible.-->
+    <script type="text/javascript" src="/preview_css/mathjax/MathJax.js">
+          MathJax.Hub.Config({
+            	extensions: ["mml2jax-bugfix.js"],
+            	menuSettings: {zoom:"Click"},
+            	"HTML-CSS": {scale:110},
+            	jax: ["input/MathML","output/HTML-CSS"]
+        	});
+        	if(location.href.split("#").length != 1) {
+          	MathJax.Hub.Register.StartupHook("End", function() {location.href = location.href; });
+        	}
+        </script>
+    <style type="text/css">
+	      .feedback {display:none}
+	      .hint {display:none}
+        body {margin: 0px; padding: 15px;}
+	    </style>
+  </head>
+  <body>
+    <!--Editing In Place javascript-->
+    <div id="cnx_module_header">
+      <h1 id="cnx_content_title">Functions Guide -- "The Real World"</h1>
+    </div>
+    <div xmlns:cnx="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:qml="http://cnx.rice.edu/qml/1.0" xmlns:mod="http://cnx.rice.edu/#moduleIds" xmlns:bib="http://bibtexml.sf.net/" id="cnx_main">
+    <p class="para" id="delete_me">Begin by going over the homework.  There are two key points to bring out, which did not come up in class yesterday.</p><p class="para" id="element-591">1. If two functions always give the same answer, we say they are equal.  This just cannot be stressed enough.  Put this on the board:</p><p class="para" id="element-207"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mn>3</m:mn>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>5</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>3</m:mn>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>15</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">3</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">-</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">5</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">3</m:mn><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">-</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">15</m:mn></m:annotation-xml></m:semantics></m:math></p><p class="para" id="element-462">They&#8217;ve all seen this.  Most of them know it is the &#8220;distributive property.&#8221;  But do they know what it <em class="emphasis">means</em>?  Explain it very carefully.  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mn>3</m:mn>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>5</m:mn>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">3</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">-</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">5</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math> is a function that says &#8220;subtract 5, then multiply by 3.&#8221;  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mn>3</m:mn>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mn>15</m:mn>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">3</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">-</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">15</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math> is a function that says &#8220;multiply by 3, then subtract 15.&#8221;  They are very different processes!  But we say they are &#8220;equal&#8221; because no matter what number you plug in, they yield the same answer.  So in the function game, there is no possible question you could ask that would tell you if the person is doing &#8220;subtract 5, then multiply by 3&#8221; or &#8220;multiply by 3, then subtract 5.&#8221;  Have the class give you a few numbers, and show how it works&#8212;for negative numbers, fractions, zero, <em class="emphasis">anything</em>.</p><p class="para" id="element-932">2. The last problem on the homework brings up what I call the &#8220;rule of consistency.&#8221;  It is perfectly OK for a function to give the same answer for different questions.  (For instance, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:msup>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:msup xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msup></m:annotation-xml></m:semantics></m:math> turns both 3 and -3 into 9.)  But it is <em class="emphasis">not</em> OK to give different answers to the <em class="emphasis">same</em> question.  That is, if a function turns a 3 into a 9 once, then it will <em class="emphasis">always</em> turn a 3 into a 9.</p><p class="para" id="element-101">Once those two points are very clearly made, and all questions answered, you move on to today&#8217;s work.  Note that there is no &#8220;in-class assignment&#8221; in the student book: this is a day for interacting with the students.</p><p class="para" id="element-952">Remind them that a function is simply a process&#8212;any process&#8212;that takes one number in, and spits a different number out.  Then explain that functions are so important because they model relationships in the real world, where one number <em class="emphasis">depends</em> on a different number.  Give them a few examples like the following&#8212;no math, just a verbal assertion that one number depends on another:</p><div class="list" id="element-325"><ul class="bullet"><li class="item">The number of toes in class depends on the number of feet in class. </li><li class="item">Which, in turn, depends on the number of people in class. </li><li class="item">The number of points you make in basketball depends on how many baskets you make. </li><li class="item">The amount I pay at the pump depends on the price of gas.</li></ul></div><p class="para" id="element-960">Have them brainstorm in pairs (for 1-2 minutes at most) to come up with as many other examples as they can.  Since this is the first &#8220;brainstorming&#8221; exercise in class, you may want to take a moment to explain the concept.  <em class="emphasis">The goal of brainstorming is quantity, not quality</em>.  The object is to come up with as many examples as you can, no matter how silly.  But although they may be silly, they must in this case be <em class="emphasis">valid</em>.  &#8220;The color of your shirt depends on your mood&#8221; is not a function, because neither one is a number.  &#8220;The number of phones in the class depends on the number of computers&#8221; is not valid, because it doesn&#8217;t.  By the end of a few minutes of brainstorming and a bit more talk from you, they should be able to see how easy it is to find numbers that depend on other numbers.</p><p class="para" id="element-306">Then&#8212;after the intuitive stuff&#8212;introduce formal functional notation.  Suppose you get two points per basket.  If we let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi></m:annotation-xml></m:semantics></m:math> represent the number of points, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math> represent the number of baskets, then <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>2</m:mn>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math>.  If we say <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>c</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>2</m:mn>
+<m:mi>c</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">c</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">c</m:mi></m:annotation-xml></m:semantics></m:math> that is not a different function, because they are both ways of expressing the idea that &#8220;<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi></m:annotation-xml></m:semantics></m:math> doubles whatever you give it&#8221; (relate to the function game).  So if you give it a 6, you get <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mn>12</m:mn>
+<m:mo>:</m:mo>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>12</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">12</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">:</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">6</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">12</m:mn></m:annotation-xml></m:semantics></m:math>.  If you give it a duck, you get two ducks: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mtext>duck</m:mtext>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>2</m:mn>
+<m:mtext>ducks</m:mtext>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mtext xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">duck</m:mtext><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mtext xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">ducks</m:mtext></m:annotation-xml></m:semantics></m:math>.  It doubles whatever you give it.</p><div class="list" id="element-37"><h2 class="list-header"><strong class="title">Key points to stress:</strong></h2><ul class="bullet"><li class="item">This notation, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math>, does <em class="emphasis">not </em>indicate that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi></m:annotation-xml></m:semantics></m:math> is being multiplied by <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math>.  It means that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi></m:annotation-xml></m:semantics></m:math> <em class="emphasis">depends on </em><m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math>, or (to express the same thing a different way), <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi></m:annotation-xml></m:semantics></m:math> <em class="emphasis">is a function of </em><m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math>. </li><li class="item">You can plug any numbers you want into this formula.  <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>12</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">6</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">12</m:mn></m:annotation-xml></m:semantics></m:math> meaning that if you get 6 baskets, you make 12 points. <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>2</m:mn>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mn>2</m:mn>
+</m:mfrac>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>5</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mfrac xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mn>1</m:mn>
+<m:mn>2</m:mn>
+</m:mfrac><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">5</m:mn></m:annotation-xml></m:semantics></m:math>  is valid mathematically, but in the &#8220;real world&#8221; you can&#8217;t make <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+
+<m:mn>2</m:mn>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mn>2</m:mn>
+</m:mfrac>
+
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mfrac xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mn>1</m:mn>
+<m:mn>2</m:mn>
+</m:mfrac></m:annotation-xml></m:semantics></m:math> baskets.  Remind them that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi></m:annotation-xml></m:semantics></m:math> is a <em class="emphasis">function</em>&#8212;a process&#8212;&#8220;double whatever you are given.&#8221; </li><li class="item">Also introduce at this point the terminology of the <em class="emphasis">dependent</em> and <em class="emphasis">independent</em> variables. </li><li class="item">Stress clearly defining variables: not &#8220;<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math> is baskets&#8221; but &#8220;<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math> is the number of baskets you make.&#8221;  (&#8220;Baskets&#8221; is not a <em class="emphasis">number</em>.) </li><li class="item">Finally, talk about how we can use this functional notation to ask questions.  The question &#8220;How many points do I get if I make 4 baskets?&#8221; is expressed as &#8220;What is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mn>4</m:mn>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">4</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math>?&#8221;  The question &#8220;How many baskets do I need in order to get 50 points?&#8221; is expressed as &#8220;<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>p</m:mi>
+<m:mo>(</m:mo>
+<m:mi>b</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>50</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">p</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">50</m:mn></m:annotation-xml></m:semantics></m:math>, solve for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>b</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">b</m:mi></m:annotation-xml></m:semantics></m:math>.&#8221;</li></ul></div><p class="para" id="element-238">For the rest of class&#8212;whether it is five minutes or twenty&#8212;the class should be making up their own functions.  The pattern is this:</p><div class="list" id="element-410"><ol class="arabic"><li class="item">Think of a situation where one number depends on another.  (&#8220;Number of toes depends on number of feet.&#8221;) </li><li class="item">Clearly label the variables.  (<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>t</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">t</m:mi></m:annotation-xml></m:semantics></m:math>=number of toes, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>f</m:mi>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi></m:annotation-xml></m:semantics></m:math>=number of feet.) </li><li class="item">Write the function that shows how the <em class="emphasis">dependent</em> variable depends on the <em class="emphasis">independent</em> variable <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>5</m:mn>
+<m:mi>f</m:mi>
+<m:mo>.</m:mo>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">t</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">5</m:mn><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">.</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math> </li><li class="item">Choose an example number to plug in.  (If there are 6 feet, 
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>t</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>5</m:mn>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>30</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">t</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">5</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">6</m:mn><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">30</m:mn></m:annotation-xml></m:semantics></m:math>.  30 toes.)
+</li></ol></div><p class="para" id="element-172">Encourage them to think of problems where the relationship is a bit more complicated than a simple multiplication.  (&#8220;The area of a circle depends on its radius, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>A</m:mi>
+<m:mo>(</m:mo>
+<m:mi>r</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mn>&#960;</m:mn>
+<m:msup>
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">A</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">r</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">&#960;</m:mn><m:msup xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msup></m:annotation-xml></m:semantics></m:math>&#8221;).</p><h2 class="para-header"><strong class="title">Homework:</strong></h2><p class="para" id="element-286">&#8220;Homework: Functions in the Real World.&#8221;
+</p><p class="para" id="element-330">When going over this homework the next day, one question that is almost <em class="emphasis">sure</em> to come up is #4g: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mo>)</m:mo>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo></m:annotation-xml></m:semantics></m:math>.  Of course, I&#8217;m building up to the idea of composite functions, but there is no need to mention that at this point.  Just remind them that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mtext>anything</m:mtext>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:msup>
+<m:mtext>anything</m:mtext>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mtext>anything</m:mtext>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mtext xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">anything</m:mtext><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:msup xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mtext>anything</m:mtext>
+<m:mn>2</m:mn>
+</m:msup><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">+</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mtext xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">anything</m:mtext><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">+</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">1</m:mn></m:annotation-xml></m:semantics></m:math>.  So the answer to (e) is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mtext>spaghetti</m:mtext>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:msup>
+<m:mtext>spaghetti</m:mtext>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mtext>spaghetti</m:mtext>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mtext xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">spaghetti</m:mtext><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:msup xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mtext>spaghetti</m:mtext>
+<m:mn>2</m:mn>
+</m:msup><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">+</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mtext xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">spaghetti</m:mtext><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">+</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">1</m:mn></m:annotation-xml></m:semantics></m:math>.  And the answer to this one is 
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline"><m:semantics><m:mrow>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:msup>
+<m:mo>)</m:mo>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mi>f</m:mi>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">=</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:msup xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">
+<m:mo>)</m:mo>
+<m:mn>2</m:mn>
+</m:msup><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">+</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">2</m:mn><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">f</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">(</m:mo><m:mi xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">x</m:mi><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">)</m:mo><m:mo xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">+</m:mo><m:mn xmlns="http://cnx.rice.edu/cnxml" xmlns:q="http://cnx.rice.edu/qml/1.0">1</m:mn></m:annotation-xml></m:semantics></m:math>.  Of course, this can (and should) be simplified, but the point right now is to stress that idea that you can plug anything you want in there.</p>  
+  </div>
+  </body>
+</html>
