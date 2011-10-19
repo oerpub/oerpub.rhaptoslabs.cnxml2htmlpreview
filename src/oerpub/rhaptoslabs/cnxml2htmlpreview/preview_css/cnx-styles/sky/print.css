@@ -1,0 +1,699 @@
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   See /stylesheets/README.txt for an explanation of
+   any CSS browser detection hacks used in this file
+   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+#cnx_global_links, #cnx_search, #cnx_print, #eipCommitForm, 
+#musical-examples, .title-bar, #cnx_discussion, #cnx_eip_link, 
+#cnx_style_chooser{
+display: none;
+}
+
+p, html, body, img{
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+body{
+font-family: georgia, batang, bookman old style, book antiqua, times, times new roman, serif;
+font-size: 10pt;
+}
+
+.para, #cnx_header .cnx_previous_next{
+margin: 10pt 0;
+}
+
+.cnx_before, .name, .example-name, .rule-name{
+font-weight: bold;
+}
+
+a{
+color: #c90;
+font-weight: bold;
+}
+
+#cnx_main a:after, #cnx_sidebar a:after{
+content: " (" attr(href) ") ";
+color: black;
+text-decoration: none;
+font-weight: normal;
+}
+
+#cnx_main code a:after, #cnx_main pre a:after, #cnx_main 
+.footnote-reference a:after, #cnx_main a.cite:after, #cnx_main 
+.example.musical a:after{
+content: "";
+}
+
+#cnx_main a[href^="/"]:after, #cnx_sidebar a[href^="/"]:after{
+content: " (http://cnx.org" attr(href) ") ";
+}
+
+#cnx_main code a[href^="/"]:after, #cnx_main pre a[href^="/"]:after, 
+#cnx_main .footnote-reference a[href^="/"]:after, #cnx_main 
+a[href^="/"].cite:after{
+content: "";
+}
+
+
+
+
+#cnx_global{
+position: absolute;
+top: 0;                    
+left: 0;
+border: 0 solid black;
+border-bottom-width: 1pt;
+width: 100%;
+}
+
+#cnx_logo a{
+font-size: 10pt;
+text-decoration: none;
+color: black;
+font-weight: normal;
+}
+
+#cnx_header, html>body #cnx_header{
+margin: 24pt 0;
+}
+
+h1{
+font-size: 24pt;
+font-weight: bold;
+margin: 30pt 0 0;
+color: #369;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+#cnx_authorship{
+font-weight: bold;
+font-size: 9pt;
+text-transform: uppercase;
+margin: 16pt 0;
+}
+
+#cnx_authorship a{
+color: black;
+}
+
+#cnx_parent{
+display: block;
+margin-top: .5em;
+}
+
+#cnx_header .cnx_previous_next{
+text-align: right;
+margin-top: 5pt;
+}
+
+#cnx_abstract{
+border: 0 solid #c90;
+border-bottom-width: 1pt;
+padding-bottom: 10pt;
+}
+
+h2{
+color: #369;
+border: 0 solid #369;
+border-bottom-width: 1.5pt;
+border-right-width: 1.5pt;
+font-size: 16pt;
+padding: 0 3pt 3pt 0;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+.section{
+margin: 20pt 0;
+}
+
+.section .section{
+margin-left: 36pt;
+}
+
+.section .section h2{
+font-size: 12pt;
+border-right-width: 0;
+border-left-width: 0;
+padding: 0 0 3pt 3pt;
+}
+
+.example .section h2, .proof .section h2, .problem .section h2, .solution .section h2, .statement .section h2{
+font-weight: normal;
+font-size: 10pt;
+}
+
+.example .section, .problem .section, .solution .section, .statement .section, .proof .section{
+margin: 10pt 0 20pt 36pt;
+}
+
+.button-text, .example-before, .problem-before, .solution-before,
+.definition-before, .footnote-reference, .footnote-reference a,
+.footnote-number, .meaning-number, .equation-number, .view-math,
+.view-math a, .rule-before, .proof-before, .note-before, .glossary,
+.references, .seealso-before, .problemset-before, .item-before{
+font-size: 9pt;
+color: #369;
+text-transform: uppercase;
+font-weight: bold;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+
+
+.para{
+line-height: 13pt;
+}
+
+.para .name{
+display: block;
+margin-bottom: 3pt;
+}
+
+.para * .name{
+display: inline;
+}
+
+pre, code{
+font-family: courier, courier new, monospace;
+font-size: 9pt;
+color: #060;
+font-style: normal;
+}
+
+code{
+display: inline;
+}
+
+pre{
+margin: 5pt 0;
+text-align: left;
+line-height: 10pt;
+}
+
+.caption code{
+font-size: 8pt;
+}
+
+code blockquote, pre blockquote, .foreign blockquote, blockquote code, blockquote pre, blockquote .foreign, code cite, pre cite, cite code, cite pre{
+font-style: normal;
+}
+
+pre i, code i, i pre, i code{
+font-style: normal;
+font-weight: bold;
+}
+
+blockquote{
+font-style: italic;
+margin-left: 60pt;
+margin-right: 60pt;
+line-height: normal;
+}
+
+.quote-source, .term-source{
+text-transform: uppercase;
+font-size: 9pt;
+text-decoration: none;
+font-style: normal;
+font-weight: normal;
+}
+
+.quote-source-before, .quote-source-after, .term-source-before, .term-source-after{
+font-style: normal;
+font-weight: normal;
+}
+
+.example{
+margin: 10pt 36pt;
+padding: 7pt 10pt;
+border: 1pt solid;
+border-bottom-color: #000;
+border-right-color: #000;
+border-top-color: #aaa;
+border-left-color: #aaa;
+}
+
+.example .para, .statement .para{
+margin: 7pt 0;
+}
+
+.definition .example, .rule .example{
+margin: 5pt 36pt;
+padding: 5pt 10pt 0;
+}
+
+.definition .example .para, .rule .example .para{
+margin: 5pt 0;
+}
+
+.example.labview, .example.musical{
+margin: 0;
+text-align: center;
+border: 0;
+}
+
+.exercise{
+margin: 10pt 0;
+}
+
+.problem{
+padding: 5pt 0;
+}
+
+.solution{
+padding: 5pt 0;
+margin-left: 36pt;
+}
+
+.button-text{
+display: none;
+}
+
+cite{
+font-style: italic;
+}
+
+.cnxn{
+color: #600;
+text-decoration: underline;
+font-size: 8pt;
+text-transform: uppercase;
+}
+
+code .cnxn, pre .cnxn{
+text-transform: none;
+}
+
+.term{
+font-weight: bold;
+font-style: normal;
+display: inline;
+}
+
+.definition{
+margin: 10pt 0;
+}
+
+.meaning, .seealso{
+margin: 5pt 0 5pt 36pt;
+padding: 2pt 0;
+}
+
+.seealso{
+margin: 2pt 0 2pt 60pt;
+}
+
+.meaning-number{   
+font-size: 10pt;
+}
+
+.term code i, code .term i, code i .term, .term i code, .term pre i, pre .term i, pre i .term, .term i pre{
+text-decoration: underline;
+}
+
+cite i, cite .foreign, i cite, i .foreign, .foreign cite, .foreign i, blockquote cite, blockquote i, blockquote .foreign, blockquote cite i .foreign, blockquote cite .foreign i, blockquote i cite .foreign, blockquote i .foreign cite, blockquote .foreign i cite, blockquote .foreign cite i{
+font-style: normal;
+}
+
+.foreign, cite i .foreign, cite .foreign i, i cite .foreign, i .foreign cite, .foreign cite i, .foreign i cite, blockquote cite i, blockquote cite .foreign, blockquote i cite, blockquote i .foreign, blockquote .foreign cite, blockquote .foreign i{ 
+font-style: italic;
+}
+
+.equation{
+margin: 5pt 0 10pt;
+position: relative;
+width: 100%;
+}
+
+.equation-number{
+position: absolute;
+top: 50%;
+right: 0;
+}
+
+.equation .name{
+display: block;
+margin-bottom: 10pt;
+text-align: left;
+}
+
+.cnx_warning a{
+color: #c00;
+}
+
+.cnx_warning{
+color: #c00;
+margin: 10pt;
+border: 1pt solid #c00;
+padding: 5pt;
+background: #fee;
+font-size: 9pt;
+font-family: times new roman, times, serif;
+}
+
+table.figure{
+text-align: center;
+margin: 10pt auto;
+}
+
+.inner-figure{
+border: 0 #333 solid;
+border-top-width: 1pt;
+border-bottom-width: 1pt;
+padding: 10pt 0;
+}
+
+table.figure .name{
+display: block;
+margin-bottom: 5pt;
+}
+
+table.figure table.subfigure, div.subfigure, div.subfigure .name{
+text-align: center;
+}
+
+.caption{
+color: #333;
+font-size: 9pt;
+padding-top: 5pt;
+text-align: left;
+}
+
+div.table .caption{
+border-top: 1pt solid #555;
+margin: 0 25%;
+}
+
+.caption .cnxn{
+font-size: 7pt;
+}
+
+div.subfigure .caption{
+text-align: center;
+margin-bottom: 10pt;
+}
+
+.caption-before{
+font-weight: bold;
+}
+
+div.table{
+margin: 10pt 0;
+}
+
+table.table, table.old-table{
+border: 1pt solid #666;
+margin-top: 5pt;
+margin-bottom: 10pt;
+}
+
+td, th{
+padding: 3pt;
+font-size: 10pt;
+}
+
+div.table .name{
+display: block;
+text-align: center;
+margin: 5pt 0;
+}
+
+table.old-table td, table.old-table th{
+text-align: left;
+border: 1pt solid #999;
+}
+
+math, .equation math, math *, .equation math *{
+color: #060;
+}
+
+semantics annotation-xml{
+display: none;
+}
+
+math[display="block"], math[mode="display"]{
+font-size: 120%;
+}
+
+.note-before{
+color: #c00;
+}
+
+.note{
+padding: 6pt;
+margin: 5pt 60pt 10pt;
+border: 1pt solid;
+border-bottom-color: #000;
+border-right-color: #000;
+border-top-color: #aaa;
+border-left-color: #aaa;
+}
+
+.footnote-number{
+font-size: 10pt;
+}
+
+span.footnote-reference{
+font-size: 9pt;
+vertical-align: 4pt;
+line-height: 10pt;
+}
+
+.footnote{
+margin: 5pt 0;
+}
+
+.rule{
+margin: 10pt 0;
+}
+
+.statement{
+margin: 10pt 5pt 5pt 36pt;
+}
+
+.proof{
+margin: 5pt 0 2pt 36pt;
+}
+
+#glossary{
+margin: 10pt 0;
+border: 0 #c90 solid;
+border-top-width: 1pt;
+padding: 10pt 0;
+}
+
+.glossary-definition{
+margin: 10pt 0 10pt 36pt;
+}
+
+.glossary-definition .term, .glossary-definition .meaning, .glossary-definition .example, .glossary-definition .example-before, .glossary-definition .para, .glossary-definition .seealso{
+display: inline;
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+.glossary-definition .term{
+margin-left: -36pt;
+}
+
+.glossary-definition * .term{
+margin: 0;
+}
+
+@media all{* html .glossary-definition .example-before{
+margin-left: .5em;
+}}
+
+html>body .glossary-definition .example-name{
+margin-right: -.5em;
+}
+
+#bibtexfile{
+margin: 10pt 0;
+padding-top: 10pt;
+border: 0 #c90 solid;
+border-top-width: 1pt;
+}
+
+.bibtexentry{
+padding-bottom: 3pt;
+}
+
+.feedback{
+font-weight: bold;
+color: #060;
+margin-left: 36pt;
+}
+
+.hint, .feedback{
+display: none;
+}
+
+input.button{
+border: .5pt solid black;
+background-color: #c90;
+}
+
+input.button, textarea, form{
+display: block;
+margin: 10pt 0 0;
+}
+
+
+
+#cnx_about_history pre{
+margin: 0;
+}
+
+#cnx_about_history #cnx_main p{
+margin-bottom: 15pt;
+}
+
+#cnx_cite{
+margin-left: 20pt !important;
+}
+
+#cnx_course_content{
+width: 255pt;
+padding: 8pt;
+float: right;
+border: 0 solid #369;
+border-left-width: 4pt;
+border-bottom-width: 1pt;
+border-top-width: 1pt;
+background-color: white;
+margin-left: 10pt;
+}
+
+@media pRiNt{body[id] #cnx_course_content{
+width: auto;
+float: none;
+margin-bottom: 10pt;
+}}
+
+* html>body #cnx_course_content{
+width: 360pt;
+}
+
+#cnx_course_content h3{
+color: #369;
+font-size: 14pt;
+margin-top: 0;
+}
+
+#cnx_course_content h4{
+font-size: 10pt;
+}
+
+#cnx_course_content ul{
+margin: 3pt 0 3pt 12pt;
+padding: 0;
+}
+
+#cnx_course_content li{
+font-size: 9pt;
+list-style-type: square;
+}
+
+#cnx_course .note{
+margin: 1em 0;
+border: 0;
+padding: 0;
+}
+
+#cnx_course_linkbar div{
+margin-bottom: 1em;
+}
+
+#cnx_course_start, #cnx_course_website{
+font-size: 1.2em;
+font-weight: bold;
+}
+
+#cnx_course_website{
+font-size: 1em;
+}
+
+#cnx_course_contributors, #cnx_course_description{
+margin: 1em 0;
+}
+
+
+
+#cnx_discussion{
+margin: 24pt 0 0;
+padding: 5pt 0 0;
+border: 0 solid #c90;
+border-top-width: 1pt;
+}
+
+h4{
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+}
+
+.cnx_previous_next.cnx_bottom{
+padding: 1em 15px 0;
+text-align: center;
+}
+
+@media all{* html .cnx_previous_next.cnx_bottom{
+width: 100%;
+}}
+
+.cnx_previous_next.cnx_bottom a{
+vertical-align: top;
+width: 31%;
+float: left;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_previous{
+text-align: left;
+margin-right: 3%;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_next{
+text-align: right;
+}
+
+* html .cnx_previous_next.cnx_bottom .cnx_toc{
+margin-right: 3%;
+}
+
+.cnx_previous_next.cnx_bottom .cnx_extra{          
+visibility: hidden;             
+}
+
+#cnx_footer{
+font-size: 9pt;
+padding: 10pt 0;
+margin-top: 30pt;
+font-family: tahoma, verdana, helvetica, arial, sans-serif;
+border: 0 solid #c90;
+border-top-width: 1pt;
+}
+
+#cnx_license_logo{
+float: left;
+margin: 0 10px 5pt 0;
+}
+
+#cnx_license{
+padding-left: 98px;
+}
+
+#cnx_license a{
+white-space: nowrap
+}          
+
+#cnx_metadata_links{
+margin-bottom: 5pt;
+}
+
+#cnx_updated{
+clear: both;
+margin: 10pt 0;
+font-style: italic;
+}
