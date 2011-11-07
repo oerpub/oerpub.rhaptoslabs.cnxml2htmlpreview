@@ -6,7 +6,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2009 Design Science, Inc.
+ *  Copyright (c) 2009-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
  */
 
 (function (HUB,HTMLCSS,AJAX) {
-  var VERSION = "1.0";
+  var VERSION = "1.1";
   
   HUB.Register.LoadHook(HTMLCSS.fontDir + "/fontdata.js",function () {
 
@@ -30,16 +30,17 @@
       allowWebFonts: false,
       
       imgDir: HTMLCSS.webfontDir+"/png",
-      imgPacked: (MathJax.isPacked || HTMLCSS.config.useOldImageData ? "" : "/unpacked"),
+      imgPacked: (MathJax.isPacked ? "" : "/unpacked"),
       imgSize: ['050','060','071','085',100,120,141,168,200,238,283,336,400,476],
       imgBaseIndex: 4,      // set by initImg()
       imgSizeForEm: {},     // cache of indexes by em-size
       imgSizeForScale: {},  // cache of indexes by scale for a given em-size
+      imgZoom: 1,           // set by initImg for each equation
 
       handleImg: function (span,font,c,n,text) {
         if (text.length) {this.addText(span,text)}
         var orig = c[5].orig; if (!orig) {orig = c[5].orig = [c[0],c[1],c[2],c[3],c[4]]}
-        var bscale = this.imgBrowserZoom(); if (!span.scale) {span.scale = 1}
+        var bscale = this.imgZoom; if (!span.scale) {span.scale = 1}
         var index = this.imgIndex(span.scale*bscale);
         if (index == this.imgEmWidth.length-1 &&
             this.em*span.scale*bscale/this.imgEmWidth[index] > 1.1)
@@ -80,6 +81,7 @@
           {if (this.em <= this.imgEmWidth[i]) break}
         if (i && this.imgEmWidth[i] - this.em > this.em - this.imgEmWidth[i-1]) {i--}
         this.imgSizeForEm[this.em] = this.imgBaseIndex = i;
+        this.imgZoom = this.imgBrowserZoom();
       },
       
       imgIndex: function (scale) {
@@ -104,12 +106,16 @@
         var ZDIV = HTMLCSS.addElement(document.body,"div",{
           style: {
             display:"none", visibility:"hidden", overflow:"scroll",
-            position:"absolute", top:0, left: 0, width:"200px", height:"200px"
+            position:"absolute", top:0, left: 0, width:"200px", height:"200px",
+            padding:0, border:0, margin:0
           }
         });
         
         var ZFRAME = HTMLCSS.addElement(ZDIV,"div",{
-          style: {position:"absolute", left:0, top:0, right:0, bottom:0}
+          style: {
+            position:"absolute", left:0, top:0, right:0, bottom:0,
+            padding:0, border:0, margin:0
+          }
         });
 
         HTMLCSS.Augment({
@@ -178,7 +184,6 @@
     };
     
     var IMGDIR = HTMLCSS.imgDir + HTMLCSS.imgPacked;
-    if (HTMLCSS.config.useOldImageData) IMGDIR = HTMLCSS.webfontDir;
     
     MathJax.Callback.Queue(
       ["Require",AJAX,IMGDIR+"/imagedata.js"],

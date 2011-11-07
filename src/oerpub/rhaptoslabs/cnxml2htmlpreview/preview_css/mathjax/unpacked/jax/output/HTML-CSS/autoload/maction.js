@@ -6,7 +6,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2010 Design Science, Inc.
+ *  Copyright (c) 2010-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -21,8 +21,10 @@
  *  limitations under the License.
  */
 
-(function (MML,HTMLCSS) {
-  var VERSION = "1.0";
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+  var VERSION = "1.1.2";
+  var MML = MathJax.ElementJax.mml,
+      HTMLCSS = MathJax.OutputJax["HTML-CSS"];
   
   var currentTip, hover, clear;
 
@@ -38,11 +40,14 @@
   MML.maction.Augment({
     HTMLtooltip: HTMLCSS.addElement(document.body,"div",{id:"MathJax_Tooltip"}),
     
-    toHTML: function (span) {
+    toHTML: function (span,HW,D) {
       span = this.HTMLhandleSize(this.HTMLcreateSpan(span)); span.bbox = null;
       var values = this.getValues("actiontype","selection"), frame;
-      if (this.data[values.selection-1]) {
-        HTMLCSS.Measured(this.data[values.selection-1].toHTML(span),span);
+      var selected = this.data[values.selection-1];
+      if (selected) {
+        HTMLCSS.Measured(selected.toHTML(span),span);
+        if (D != null) {HTMLCSS.Remeasured(selected.HTMLstretchV(span,HW,D),span)}
+        else if (HW != null) {HTMLCSS.Remeasured(selected.HTMLstretchH(span,HW),span)}
         if (HTMLCSS.msieHitBoxBug) {
           // margin-left doesn't work on inline-block elements in IE, so put it in a SPAN
           var box = HTMLCSS.addElement(span,"span");
@@ -66,6 +71,8 @@
       this.HTMLhandleColor(span);
       return span;
     },
+    HTMLstretchH: MML.mbase.HTMLstretchH,
+    HTMLstretchV: MML.mbase.HTMLstretchV,
     
     //
     //  Implementations for the various actions
@@ -102,12 +109,8 @@
     HTMLclick: function (event) {
       this.selection++;
       if (this.selection > this.data.length) {this.selection = 1}
-      var obj = this; while (obj.type !== "math") {obj = obj.inherit}
-      var nobr = obj.HTMLspanElement();
-      while (nobr.nodeName.toLowerCase() !== "nobr") {nobr = nobr.parentNode}
-      var span = nobr.parentNode; span.removeChild(nobr);
-      var div = span; if (span.parentNode.className === "MathJax_Display") {div = span.parentNode}
-      obj.toHTML(span,div);
+      var math = this; while (math.type !== "math") {math = math.inherit}
+      MathJax.Hub.getJaxFor(math.inputID).Update();
       if (!event) {event = window.event}
       if (event.preventDefault) {event.preventDefault()}
       if (event.stopPropagation) {event.stopPropagation()}
@@ -134,7 +137,11 @@
       if (!event) {event = window.event}
       if (clear) {clearTimeout(clear); clear = null}
       if (hover) {clearTimeout(hover)}
-      var x = event.clientX; var y = event.clientY;
+      var x = event.pageX; var y = event.pageY;
+      if (x == null) {
+        x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+      }
       var callback = MathJax.Callback(["HTMLtooltipPost",this,x+CONFIG.offsetX,y+CONFIG.offsetY])
       hover = setTimeout(callback,CONFIG.delayPost);
     },
@@ -191,5 +198,5 @@
   MathJax.Hub.Startup.signal.Post("HTML-CSS maction Ready");
   MathJax.Ajax.loadComplete(HTMLCSS.autoloadDir+"/maction.js");
   
-})(MathJax.ElementJax.mml,MathJax.OutputJax["HTML-CSS"]);
+});
 

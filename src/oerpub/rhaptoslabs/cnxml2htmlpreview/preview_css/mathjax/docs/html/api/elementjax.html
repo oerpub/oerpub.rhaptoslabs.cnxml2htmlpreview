@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The MathJax.ElementJax Class &mdash; MathJax v1.0 documentation</title>
+    <title>The MathJax.ElementJax Class &mdash; MathJax v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/mj.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,12 +21,14 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="MathJax v1.0 documentation" href="../index.html" />
+    <!--<script type="text/javascript" src="../../../MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <link rel="top" title="MathJax v1.1 documentation" href="../index.html" />
     <link rel="up" title="The MathJax API" href="index.html" />
     <link rel="next" title="The Base Jax Class" href="jax.html" />
     <link rel="prev" title="The MathJax.OutputJax Class" href="outputjax.html" /> 
   </head>
   <body>
+    
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="outputjax.html" title="The MathJax.OutputJax Class"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">The MathJax API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -67,7 +69,7 @@ that class.</p>
 <h2>Class Properties<a class="headerlink" href="#class-properties" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">name</tt></dt>
+<tt class="descname">id</tt></dt>
 <dd><p>The name of the jax.</p>
 </dd></dl>
 
@@ -80,7 +82,7 @@ that class.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">directory</tt></dt>
-<dd><p>The directory where the jax files are stored (e.g., <tt class="docutils literal"><span class="pre">&quot;[MathJax]/jax/element/mml&quot;</span></tt>);</p>
+<dd><p>The directory where the jax files are stored (e.g., <tt class="docutils literal"><span class="pre">&quot;[MathJax]/jax/element/mml&quot;</span></tt>).</p>
 </dd></dl>
 
 </div>
@@ -89,13 +91,15 @@ that class.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">inputJax</tt></dt>
-<dd><p>A reference to the input jax that created the element.</p>
+<dd><p>A reference to the input jax that created the element.  (In the
+future, this will be changed to the name of the input jax.)</p>
 </dd></dl>
 
 <dl class="describe">
 <dt>
 <tt class="descname">outputJax</tt></dt>
-<dd><p>A reference to the output jax that has processed this element.</p>
+<dd><p>A reference to the output jax that has processed this element.  (In
+the future, this will be changed to the name of the output jax.)</p>
 </dd></dl>
 
 <dl class="describe">
@@ -114,7 +118,8 @@ collection, thus causing a memory leak.</p>
 <dt>
 <tt class="descname">originalText</tt></dt>
 <dd><p>A string indicating the original input text that was processed for
-this element.</p>
+this element.  (In the future, this may be managed by the input jax
+rather than <tt class="docutils literal"><span class="pre">MathJax.Hub</span></tt>.)</p>
 </dd></dl>
 
 <dl class="describe">
@@ -132,7 +137,7 @@ this element.</p>
 <dt id="Text">
 <tt class="descname">Text</tt><big>(</big><em>text</em><span class="optional">[</span>, <em>callback</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#Text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the input text for this element to the given text and
-reprocesses the mathematics.  (I.e., update the equation to the
+reprocesses the mathematics.  (I.e., updates the equation to the
 new one given by <cite>text</cite>).  When the processing is complete, the
 <cite>callback</cite>, if any, is called.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -140,7 +145,7 @@ new one given by <cite>text</cite>).  When the processing is complete, the
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><ul class="first simple">
-<li><strong>text</strong> &#8212; the new mathematic source string for the element</li>
+<li><strong>text</strong> &#8212; the new mathematics source string for the element</li>
 <li><strong>callback</strong> &#8212; the callback specification</li>
 </ul>
 </td>
@@ -155,7 +160,7 @@ new one given by <cite>text</cite>).  When the processing is complete, the
 <dl class="method">
 <dt>
 <tt class="descname">Reprocess</tt><big>(</big><span class="optional">[</span><em>callback</em><span class="optional">]</span><big>)</big></dt>
-<dd><p>Remove the output and produce it again.  This may be necessary if
+<dd><p>Removes the output and produces it again.  This may be necessary if
 there are changes to the CSS styles that would affect the layout
 of the mathematics, for example.  The <cite>callback</cite>, if any, is
 called when the process completes.</p>
@@ -237,11 +242,6 @@ contextual menu.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="jax.html"
                         title="next chapter">The Base Jax Class</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/api/elementjax.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -271,13 +271,14 @@ contextual menu.</p>
         <li class="right" >
           <a href="outputjax.html" title="The MathJax.OutputJax Class"
              >previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="index.html" >The MathJax API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 Design Science.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+        &copy; Copyright 2011 Design Science.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
+    
   </body>
 </html>

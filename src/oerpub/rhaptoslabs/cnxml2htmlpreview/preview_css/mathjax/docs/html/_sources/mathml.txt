@@ -5,7 +5,7 @@ MathJax MathML Support
 **********************
 
 The support for :term:`MathML` in MathJax consists of three parts:  the
-`mml2jax` preprocessor, the MathML input processor, and the NativeMML
+`mml2jax` preprocessor, the `MathML` input processor, and the `NativeMML`
 output processor.  The first of these looks for ``<math>`` tags within
 your document and marks them for later processing by MathJax.  The
 second converts the MathML to the internal format used by MathJax, and
@@ -16,7 +16,7 @@ Because of MathJax's modular design, you do not need to use all three
 of these components.  For example, you could use the `tex2jax`
 preprocessor and the TeX input processor, but the NativeMML output
 processor, so that your mathematics is entered in TeX format, but
-displayed as MathML.  Or you could use the `mml2jax` reprocessor and
+displayed as MathML.  Or you could use the `mml2jax` preprocessor and
 MathML input processor with the HTML-CSS output processor to make
 MathML available in browsers that don't have native MathML support.
 It is also possible to have MathJax select the output processor for
@@ -34,15 +34,15 @@ any of the other setup issues that make using native MathML
 difficult.  MathJax handles the setup and properly marks the
 mathematics so that the browser will render it as MathML.  In
 addition, MathJax provides its contextual menu for the MathML, which
-lets the user zoom the mathematics for easier reading, get the copy
+lets the user zoom the mathematics for easier reading, get and copy
 the source markup, and so on, so there is added value to using MathJax
-even whith a pure MathML workflow.
+even with a pure MathML workflow.
 
 
 MathML in HTML pages
 ====================
 
-For MathML that is handled via the pre-processor, you should not use
+For MathML that is handled via the preprocessor, you should not use
 the named MathML entities, but rather use the numeric entities like
 ``&#x221A;`` or unicode characters embedded in the page itself.  The
 reason is that entities are replaced by the browser before MathJax
@@ -87,7 +87,7 @@ The deficiencies include:
   ``msgroup``, ``msrow``, ``mscarries``, and ``mscarry``.
 
 - Limited support for line breaking (they are only allowed in direct
-  children of ``mrow`` or implied ``mrow`` elements.
+  children of ``mrow`` or implied ``mrow`` elements).
 
 - No support for alignment groups in table.
 

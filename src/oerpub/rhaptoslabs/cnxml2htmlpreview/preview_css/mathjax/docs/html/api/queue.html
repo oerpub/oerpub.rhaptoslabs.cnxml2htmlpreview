@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The MathJax.Callback.Queue Class &mdash; MathJax v1.0 documentation</title>
+    <title>The MathJax.Callback.Queue Class &mdash; MathJax v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/mj.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,12 +21,14 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="MathJax v1.0 documentation" href="../index.html" />
+    <!--<script type="text/javascript" src="../../../MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <link rel="top" title="MathJax v1.1 documentation" href="../index.html" />
     <link rel="up" title="The MathJax API" href="index.html" />
     <link rel="next" title="The MathJax.Callback.Signal Class" href="signal.html" />
     <link rel="prev" title="The MathJax.Callback Class" href="callback.html" /> 
   </head>
   <body>
+    
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="callback.html" title="The MathJax.Callback Class"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">The MathJax API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -53,7 +55,7 @@
 <span id="api-queue"></span><h1>The MathJax.Callback.Queue Class<a class="headerlink" href="#the-mathjax-callback-queue-class" title="Permalink to this headline">¶</a></h1>
 <p>The <tt class="docutils literal"><span class="pre">MathJax.Callback.Queue</span></tt> object is one of the key mechanisms
 used by MathJax to synchronize its actions with those that occur
-asynchronously, like loading files and stylesheets.  A <cite>Queue</cite> obejct
+asynchronously, like loading files and stylesheets.  A <cite>Queue</cite> object
 is used to coordinate a sequence of actions so that they are performed
 one after another, even when one action has to wait for an
 asynchronous process to complete.  This guarantees that operations are
@@ -118,17 +120,16 @@ synchronization, say as an entry in some other queue).</p>
 <dl class="method">
 <dt>
 <tt class="descname">Process</tt><big>(</big><big>)</big></dt>
-<dd><blockquote>
-Process the commands in the queue, provided the queue is not
+<dd><p>Process the commands in the queue, provided the queue is not
 waiting for another command to complete.  This method is used
-internally; you should not need to call it yourself.</blockquote>
+internally; you should not need to call it yourself.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="Suspend">
 <tt class="descname">Suspend</tt><big>(</big><big>)</big><a class="headerlink" href="#Suspend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Increments the <cite>running</cite> property, indicating that any commands that
-are added the queue should not be executed immediately, but should
+are added to the queue should not be executed immediately, but should
 be queued for later execution (when its <a class="reference internal" href="#Resume" title="Resume"><tt class="xref py py-meth docutils literal"><span class="pre">Resume()</span></tt></a> is
 called).  This method is used internally; you should not need to
 call it yourself.</p>
@@ -152,7 +153,7 @@ rather than a callback specification.  A callback to this function
 (passing it the original callback) is queued instead, and it
 simply returns the callback it was passed. Since the queue will
 wait for a callback if it is the return value of one of the
-commands it executes, this effectively make the queue wait for the
+commands it executes, this effectively makes the queue wait for the
 original callback at that point in the command queue.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -201,11 +202,6 @@ it has been waiting for a command to complete.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="signal.html"
                         title="next chapter">The MathJax.Callback.Signal Class</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/api/queue.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -235,13 +231,14 @@ it has been waiting for a command to complete.</p>
         <li class="right" >
           <a href="callback.html" title="The MathJax.Callback Class"
              >previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="index.html" >The MathJax API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 Design Science.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+        &copy; Copyright 2011 Design Science.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
+    
   </body>
 </html>

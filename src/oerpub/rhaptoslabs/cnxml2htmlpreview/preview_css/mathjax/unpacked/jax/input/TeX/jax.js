@@ -8,7 +8,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2009-2010 Design Science, Inc.
+ *  Copyright (c) 2009-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -231,7 +231,7 @@
       this.SUPER(arguments).Init.apply(this,arguments);
     },
     checkItem: function (item) {
-      if (item.isClose) {
+      if (item.isClose && item.type !== "over") {
         if (item.isEntry) {this.EndEntry(); this.clearEnv(); return FALSE}
         if (item.isCR)    {this.EndEntry(); this.EndRow(); this.clearEnv(); return FALSE}
         this.EndTable(); this.clearEnv();
@@ -850,14 +850,14 @@
         nonumber:          ['Macro',''],             // not implemented yet
 
         //  Extensions to TeX
-        unicode:    ['Extension','unicode'],
-        color:      'Color',
+        unicode:           ['Extension','unicode'],
+        color:              'Color',
         
-//      href:       ['Extension','HTML'],
-//      'class':    ['Extension','HTML'],
-//      style:      ['Extension','HTML'],
-//      cssId:      ['Extension','HTML'],
-//      bbox:       ['Extension','bbox'],
+        href:              ['Extension','HTML'],
+        'class':           ['Extension','HTML'],
+        style:             ['Extension','HTML'],
+        cssId:             ['Extension','HTML'],
+//      bbox:              ['Extension','bbox'],
     
         require:            'Require'
 
@@ -915,7 +915,7 @@
 
   var PARSE = MathJax.Object.Subclass({
     Init: function (string,env) {
-      this.string = string; this.i = 0;
+      this.string = string; this.i = 0; this.macroCount = 0;
       var ENV; if (env) {ENV = {}; for (var id in env) {if (env.hasOwnProperty(id)) {ENV[id] = env[id]}}}
       this.stack = TEX.Stack(ENV);
       this.Parse();
@@ -1195,7 +1195,8 @@
     
     Accent: function (name,accent,stretchy) {
       var c = this.ParseArg(name);
-      var mml = this.mmlToken(MML.mo(MML.entity("#x"+accent)).With({accent: TRUE}));
+      var def = {accent: true}; if (this.stack.env.font) {def.mathvariant = this.stack.env.font}
+      var mml = this.mmlToken(MML.mo(MML.entity("#x"+accent)).With(def));
       mml.stretchy = (stretchy ? TRUE : FALSE);
       this.Push(MML.munderover(c,null,mml).With({accent: TRUE}));
     },
@@ -1203,6 +1204,7 @@
     UnderOver: function (name,c,stack) {
       var pos = {o: "over", u: "under"}[name.charAt(1)];
       var base = this.ParseArg(name);
+      if (base.Get("movablelimits")) {base.movablelimits = false}
       var mml = MML.munderover(base,null,null);
       if (stack) {mml.movesupsub = TRUE}
       mml.data[mml[pos]] = 
@@ -1273,7 +1275,7 @@
       var h = this.GetDimen(name);
       var item = STACKITEM.position().With({name: name, move: 'vertical'});
       if (h.charAt(0) === '-') {h = h.slice(1); name = {raise: "\\lower", lower: "\\raise"}[name.substr(1)]}
-      if (name === "\\lower") {item.dh = '-'+h; item.dd = h} else {item.dh = h; item.dd = '-'+h}
+      if (name === "\\lower") {item.dh = '-'+h; item.dd = '+'+h} else {item.dh = '+'+h; item.dd = '-'+h}
       this.Push(item);
     },
     
@@ -1330,7 +1332,7 @@
     },
     
     FBox: function (name) {
-      this.Push(MML.menclose.apply(MML,this.InternalMath(this.GetArgument(name))));
+      this.Push(MML.menclose.apply(MML,this.InternalMath(this.GetArgument(name))).With({notation:"box"}));
     },
     
     Require: function (name) {
@@ -1356,6 +1358,8 @@
       }
       this.string = this.AddArgs(macro,this.string.slice(this.i));
       this.i = 0;
+      if (++this.macroCount > TEX.config.MAXMACROS)
+        {TEX.Error("MathJax maximum macro substitution count exceeded; is there a recursive macro call?")}
     },
     
     Matrix: function (name,open,close,align,spacing,vspacing,style) {
@@ -1405,6 +1409,8 @@
       var env = this.GetArgument(name);
       if (env.match(/[^a-z*]/i)) {TEX.Error('Invalid environment name "'+env+'"')}
       if (!TEXDEF.environment[env]) {TEX.Error('Unknown environment "'+env+'"')}
+      if (++this.macroCount > TEX.config.MAXMACROS)
+        {TEX.Error("MathJax maximum substitution count exceeded; is there a recursive latex environment?")}
       var cmd = TEXDEF.environment[env]; if (!(cmd instanceof Array)) {cmd = [cmd]}
       var mml = STACKITEM.begin().With({name: env, end: cmd[1], parse:this});
       if (cmd[0] && this[cmd[0]]) {mml = this[cmd[0]].apply(this,[mml].concat(cmd.slice(2)))}
@@ -1627,13 +1633,13 @@
           if (match === '$') {
             mml.push(MML.TeXAtom(TEX.Parse(text.slice(k,i-1)).mml().With(def)));
             match = ''; k = i;
-          } else {
+          } else if (match === '') {
             if (k < i-1) {mml.push(this.InternalText(text.slice(k,i-1),def))}
             match = '$'; k = i;
           }
         } else if (c === '\\') {
           c = text.charAt(i++);
-          if (c === '(' && match == '') {
+          if (c === '(' && match === '') {
             if (k < i-2) {mml.push(this.InternalText(text.slice(k,i-2),def))}
             match = ')'; k = i;
           } else if (c === ')' && match === ')') {
@@ -1678,6 +1684,8 @@
      */
     AddArgs: function (s1,s2) {
       if (s2.match(/^[a-z]/i) && s1.match(/(^|[^\\])(\\\\)*\\[a-z]+$/i)) {s1 += ' '}
+      if (s1.length + s2.length > TEX.config.MAXBUFFER)
+        {TEX.Error("MathJax internal buffer size exceeded; is there a recursive macro call?")}
       return s1+s2;
     }
     
@@ -1687,6 +1695,11 @@
 
   TEX.Augment({
     Stack: STACK, Parse: PARSE, Definitions: TEXDEF, Startup: STARTUP,
+    
+    config: {
+      MAXMACROS: 10000,    // maximum number of macro substitutions per equation
+      MAXBUFFER: 5*1024    // maximum size of TeX string to process
+    },
     
     Translate: function (script) {
       var mml, math = script.innerHTML.replace(/^\s+/,"").replace(/\s+$/,"");
@@ -1704,11 +1717,15 @@
       }
       if (mml.inferred) {mml = MML.apply(MathJax.ElementJax,mml.data)} else {mml = MML(mml)}
       if (displaystyle) {mml.root.display = "block"}
-      return mml;
+      return this.postfilterMath(mml,displaystyle,script);
     },
     prefilterMath: function (math,displaystyle,script) {
       // avoid parsing super- and subscript numbers as a unit
-      return math.replace(/([_^]\s*\d)(\d)/g,"$1 $2");
+      return math.replace(/([_^]\s*\d)([0-9.,])/g,"$1 $2");
+    },
+    postfilterMath: function (math,displaystyle,script) {
+      this.combineRelations(math.root);
+      return math;
     },
     formatError: function (err,math,displaystyle,script) {
       return MML.merror(err.message.replace(/\n.*/,""));
@@ -1718,6 +1735,23 @@
     },
     Macro: function (name,def,argn) {
       TEXDEF.macros[name] = ['Macro'].concat([].slice.call(arguments,1));
+    },
+    
+    combineRelations: function (mml) {
+      for (var i = 0, m = mml.data.length; i < m; i++) {
+        if (mml.data[i]) {
+          if (mml.isa(MML.mrow)) {
+            while (i+1 < m && mml.data[i+1] &&
+                   mml.data[i].isa(MML.mo) && mml.data[i+1].isa(MML.mo) &&
+                   mml.data[i].Get("texClass") === MML.TEXCLASS.REL &&
+                   mml.data[i+1].Get("texClass") === MML.TEXCLASS.REL) {
+              mml.data[i].Append.apply(mml.data[i],mml.data[i+1].data);
+              mml.data.splice(i+1,1); m--;
+            }
+          }
+          if (!mml.data[i].isToken) {this.combineRelations(mml.data[i])}
+        }
+      }
     }
   });
 

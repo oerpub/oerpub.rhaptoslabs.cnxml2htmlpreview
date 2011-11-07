@@ -7,7 +7,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2009 Design Science, Inc.
+ *  Copyright (c) 2009-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@
  */
 
 MathJax.OutputJax["HTML-CSS"] = MathJax.OutputJax({
-  name: "HTML-CSS",
-  version: "1.0",
+  id: "HTML-CSS",
+  version: "1.1.5",
   directory: MathJax.OutputJax.directory + "/HTML-CSS",
   extensionDir: MathJax.OutputJax.extensionDir + "/HTML-CSS",
   autoloadDir: MathJax.OutputJax.directory + "/HTML-CSS/autoload",
@@ -32,11 +32,13 @@ MathJax.OutputJax["HTML-CSS"] = MathJax.OutputJax({
   webfontDir: MathJax.OutputJax.fontDir + "/HTML-CSS",      // font name added later
   
   config: {
-    scale: 100,
+    scale: 100, minScaleAdjust: 50,
     availableFonts: ["STIX","TeX"],
     preferredFont: "TeX",
     webFont: "TeX",
     imageFont: "TeX",
+    undefinedFamily: "STIXGeneral,'Arial Unicode MS',serif",
+    
     showMathMenu: true,
     
     styles: {
@@ -63,6 +65,7 @@ MathJax.OutputJax["HTML-CSS"] = MathJax.OutputJax({
         "box-shadow": "2px 2px 5px #AAAAAA",         // Opera 10.5
         "-webkit-box-shadow": "2px 2px 5px #AAAAAA", // Safari 3 and Chrome
         "-moz-box-shadow": "2px 2px 5px #AAAAAA",    // Forefox 3.5
+        "-khtml-box-shadow": "2px 2px 5px #AAAAAA",  // Konqueror
         filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')", // IE
         padding: "3px 4px"
       }
@@ -70,11 +73,14 @@ MathJax.OutputJax["HTML-CSS"] = MathJax.OutputJax({
     
   }
 });
-MathJax.OutputJax["HTML-CSS"].Register("jax/mml");
+if (MathJax.Hub.Browser.isMSIE && document.documentMode >= 9)
+  {delete MathJax.OutputJax["HTML-CSS"].config.styles["#MathJax_Tooltip"].filter}
 
-(function (HUB,HTMLCSS) {
-  var CONFIG;
-  CONFIG = HUB.Insert({
+if (!MathJax.Hub.config.delayJaxRegistration)
+  {MathJax.OutputJax["HTML-CSS"].Register("jax/mml")}
+
+MathJax.Hub.Register.StartupHook("End Config",[function (HUB,HTMLCSS) {
+  var CONFIG = HUB.Insert({
 
     //
     //  The minimum versions that HTML-CSS supports
@@ -102,11 +108,10 @@ MathJax.OutputJax["HTML-CSS"].Register("jax/mml");
     //  The function to call to display the math for unsupported browsers
     //
     minBrowserTranslate: function (script) {
-      var MJ = HUB.getJaxFor(script), text = ["[Math]"], delim
+      var MJ = HUB.getJaxFor(script), text = ["[Math]"], delim;
       var span = document.createElement("span",{className: "MathJax_Preview"});
-      var display = MJ.root.Get("displaystyle")
-      if (MJ.inputJax.name === "TeX") {
-        if (display) {
+      if (MJ.inputJax.id === "TeX") {
+        if (MJ.root.Get("displaystyle")) {
           delim = CONFIG.displayMathDelimiters;
           text = [delim[0]+MJ.originalText+delim[1]];
           if (CONFIG.multilineDisplay) text = text[0].split(/\n/);
@@ -127,12 +132,12 @@ MathJax.OutputJax["HTML-CSS"].Register("jax/mml");
   if (HUB.Browser.version !== "0.0" &&
      !HUB.Browser.versionAtLeast(CONFIG.minBrowserVersion[HUB.Browser]||0.0)) {
        HTMLCSS.Translate = CONFIG.minBrowserTranslate;
-       MathJax.Hub.Config({showProcessingMessages: false});
+       HUB.Config({showProcessingMessages: false});
        MathJax.Message.Set("Your browser does not support MathJax",null,4000);
        HUB.Startup.signal.Post("MathJax not supported");
   }
 
-})(MathJax.Hub,MathJax.OutputJax["HTML-CSS"]);
+},MathJax.Hub,MathJax.OutputJax["HTML-CSS"]]);
 
 
 MathJax.OutputJax["HTML-CSS"].loadComplete("config.js");

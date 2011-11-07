@@ -7,7 +7,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2010 Design Science, Inc.
+ *  Copyright (c) 2010-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
  */
 
 MathJax.Hub.Register.LoadHook("[MathJax]/jax/element/mml/jax.js",function () {
-  var VERSION = "1.0";
+  var VERSION = "1.1.1";
   
   var MML = MathJax.ElementJax.mml;
   
@@ -130,6 +130,10 @@ MathJax.Hub.Register.LoadHook("[MathJax]/jax/element/mml/jax.js",function () {
   
   MML.entity.Augment({
     toMathML: function (space) {return (space||"") + "&"+this.data[0]+";<!-- "+this.toString()+" -->"}
+  });
+  
+  MML.xml.Augment({
+   toMathML: function (space) {return (space||"") + this.toString()}
   });
   
   MathJax.Hub.Register.StartupHook("TeX mathchoice Ready",function () {

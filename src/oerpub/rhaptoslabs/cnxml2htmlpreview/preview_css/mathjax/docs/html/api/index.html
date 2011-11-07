@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The MathJax API &mdash; MathJax v1.0 documentation</title>
+    <title>The MathJax API &mdash; MathJax v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/mj.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,11 +21,13 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="MathJax v1.0 documentation" href="../index.html" />
+    <!--<script type="text/javascript" src="../../../MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <link rel="top" title="MathJax v1.1 documentation" href="../index.html" />
     <link rel="next" title="The MathJax variable" href="variable.html" />
     <link rel="prev" title="Modifying Math on the Page" href="../typeset.html" /> 
   </head>
   <body>
+    
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -38,7 +40,7 @@
         <li class="right" >
           <a href="../typeset.html" title="Modifying Math on the Page"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,12 +54,14 @@
 <p>The following links document the various components that make up
 MathJax.  These are implemented as JavaScript objects contained within
 the single global variable, <tt class="docutils literal"><span class="pre">MathJax</span></tt>.  Although JavaScript includes
-an objects with some inheritance capabilities, they do not constitute
-a full object-oriented programming model, so MathJax implements
-its own object library.  This means there is an ambiguity when we
-speak of an &#8220;object&#8221;, as it could be either a native JavaScript
-object, or a MathJax object.  We will use <cite>Object</cite> (capitalized) or
-<cite>MathJax.Object</cite> for, when the distinction is important.</p>
+an object system with some inheritance capabilities, they do not
+constitute a full object-oriented programming model, so MathJax
+implements its own object library.  This means there is an ambiguity
+when we speak of an &#8220;object&#8221;, as it could be either a native
+JavaScript object, or a MathJax object.  When the distinction is
+importat, we will use <cite>Object</cite> (capitalized) or <cite>MathJax.Object</cite> for
+the latter; the javascript object will always be listed in lower
+case.</p>
 <p>You may also want to view the <a class="reference internal" href="../index.html#advanced-topics"><em>advanced topics</em></a>
 on the main MathJax documentation page.</p>
 <div class="toctree-wrapper compound">
@@ -99,11 +103,6 @@ on the main MathJax documentation page.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="variable.html"
                         title="next chapter">The MathJax variable</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/api/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -133,12 +132,13 @@ on the main MathJax documentation page.</p>
         <li class="right" >
           <a href="../typeset.html" title="Modifying Math on the Page"
              >previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 Design Science.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+        &copy; Copyright 2011 Design Science.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
+    
   </body>
 </html>

@@ -7,7 +7,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2009 Design Science, Inc.
+ *  Copyright (c) 2009-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -23,12 +23,11 @@
  */
 
 MathJax.InputJax.MathML = MathJax.InputJax({
-  name: "MathML",
-  version: "1.0",
+  id: "MathML",
+  version: "1.1.4",
   directory: MathJax.InputJax.directory + "/MathML",
   extensionDir: MathJax.InputJax.extensionDir + "/MathML",
   entityDir: MathJax.InputJax.directory + "/MathML/entities",
-  require: [MathJax.ElementJax.directory + "/mml/jax.js"],
   
   config: {
     useMathMLspacing: false         // false means use TeX spacing, true means MML spacing

@@ -8,7 +8,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2009 Design Science, Inc.
+ *  Copyright (c) 2009-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@
 MathJax.ElementJax.mml = MathJax.ElementJax({
   mimeType: "jax/mml"
 },{
-  name: "mml",
-  version: "1.0",
+  id: "mml",
+  version: "1.1.1",
   directory: MathJax.ElementJax.directory + "/mml",
   extensionDir: MathJax.ElementJax.extensionDir + "/mml",
   optableDir: MathJax.ElementJax.directory + "/mml/optable"
@@ -568,6 +568,7 @@ MathJax.ElementJax.mml.Augment({
   
   MML.mtext = MML.mbase.Subclass({
     type: "mtext", isToken: TRUE,
+    isSpacelike: function () {return TRUE},
     texClass: MML.TEXCLASS.ORD,
     defaults: {
       mathvariant: MML.INHERIT,
@@ -758,7 +759,7 @@ MathJax.ElementJax.mml.Augment({
     inheritFromMe: TRUE,
     noInherit: {
       mpadded: {width: TRUE, height: TRUE, depth: TRUE, lspace: TRUE, voffset: TRUE},
-      mtable:  {width: TRUE, height: TRUE, depth: TRUE}
+      mtable:  {width: TRUE, height: TRUE, depth: TRUE, align: TRUE}
     },
     setTeXclass: MML.mbase.setChildTeXclass
   });
@@ -1076,9 +1077,12 @@ MathJax.ElementJax.mml.Augment({
       actiontype: MML.ACTIONTYPE.TOGGLE,
       selection: 1
     },
-    // FIXME: isEmbellished and Core should be keyed to selection
-    // FIXME: should base class on selection
-    setTeXclass: MML.mbase.setSeparateTeXclasses
+    selected: function () {return this.data[this.Get("selection")-1] || MML.NULL},
+    isEmbellished: function () {return this.selected().isEmbellished()},
+    isSpacelike: function () {return this.selected().isSpacelike()},
+    Core: function () {return this.selected().Core()},
+    CoreMO: function () {return this.selected().CoreMO()},
+    setTeXclass: function (prev) {return this.selected().setTeXclass(prev)}
   });
   
   MML.semantics = MML.mbase.Subclass({
@@ -1171,6 +1175,50 @@ MathJax.ElementJax.mml.Augment({
     }
   });
   
+  MML.xml = MML.mbase.Subclass({
+    type: "xml",
+    Init: function () {
+      this.div = document.createElement("div");
+      return this.SUPER(arguments).Init.apply(this,arguments);
+    },
+    Append: function () {
+      for (var i = 0, m = arguments.length; i < m; i++) {
+        var node = this.Import(arguments[i]);
+        this.data.push(node);
+        this.div.appendChild(node);
+      }
+    },
+    Import: function (node) {
+      if (document.importNode) {return document.importNode(node,true)}
+      //
+      //  IE < 9 doesn't have importNode, so fake it.
+      //
+      var nNode, i, m;
+      if (node.nodeType === 1) { // ELEMENT_NODE
+        nNode = document.createElement(node.nodeName);
+        if (node.className) {nNode.className=iNode.className}
+        for (i = 0, m = node.attributes.length; i < m; i++) {
+          var attribute = node.attributes[i];
+          if (attribute.specified && attribute.nodeValue != null && attribute.nodeValue != '')
+            {nNode.setAttribute(attribute.nodeName,attribute.nodeValue)}
+          if (attribute.nodeName === "style") {nNode.style.cssText = attribute.nodeValue}
+        }
+        if (node.className) {nNode.className = node.className}
+      } else if (node.nodeType === 3 || node.nodeType === 4) { // TEXT_NODE or CDATA_SECTION_NODE
+        nNode = document.createTextNode(node.nodeValue);
+      } else if (node.nodeType === 8) { // COMMENT_NODE
+        nNode = document.createComment(node.nodeValue);
+      } else {
+        return document.createTextNode('');
+      }
+      for (i = 0, m = node.childNodes.length; i < m; i++)
+        {nNode.appendChild(this.Import(node.childNodes[i]))}
+      return nNode;
+    },
+    value: function () {return this.div},
+    toString: function () {return this.div.innerHTML}
+  });
+  
   MML.TeXAtom = MML.mbase.Subclass({
     type: "texatom",
     inferRow: TRUE,
@@ -1181,6 +1229,8 @@ MathJax.ElementJax.mml.Augment({
       return this;
     }
   });
+  
+  MML.NULL = MML.mbase().With({type:"null"});
 
   var TEXCLASS = MML.TEXCLASS;
   

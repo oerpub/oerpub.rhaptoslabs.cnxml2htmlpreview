@@ -8,7 +8,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2009 Design Science, Inc.
+ *  Copyright (c) 2009-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -24,13 +24,10 @@
  */
 
 MathJax.Extension.tex2jax = {
-  version: "1.0",
+  version: "1.1.3",
   config: {
-    element: null,             // The ID of the element to be processed
-                               //   (defaults to full document)
-
     inlineMath: [              // The start/stop pairs for in-line math
-      ['$','$'],               //  (comment out any you don't want, or add your own, but
+//    ['$','$'],               //  (comment out any you don't want, or add your own, but
       ['\\(','\\)']            //  be sure that you don't have an extra comma at the end)
     ],
 
@@ -67,14 +64,14 @@ MathJax.Extension.tex2jax = {
   
   PreProcess: function (element) {
     if (!this.configured) {
-      MathJax.Hub.Insert(this.config,(MathJax.Hub.config.tex2jax||{}));
+      this.config = MathJax.Hub.CombineConfig("tex2jax",this.config);
       if (this.config.Augment) {MathJax.Hub.Insert(this,this.config.Augment)}
       if (typeof(this.config.previewTeX) !== "undefined" && !this.config.previewTeX)
         {this.config.preview = "none"} // backward compatibility for previewTeX parameter
       this.configured = true;
     }
     if (typeof(element) === "string") {element = document.getElementById(element)}
-    if (!element) {element = this.config.element || document.body}
+    if (!element) {element = document.body}
     this.createPatterns();
     this.scanElement(element,element.nextSibling);
   },
@@ -120,7 +117,7 @@ MathJax.Extension.tex2jax = {
   },
   
   scanElement: function (element,stop,ignore) {
-    var cname, tname;
+    var cname, tname, ignoreChild;
     while (element && element != stop) {
       if (element.nodeName.toLowerCase() === '#text') {
         if (!ignore) {element = this.scanText(element)}
@@ -129,8 +126,8 @@ MathJax.Extension.tex2jax = {
         tname = (typeof(element.tagName)   === "undefined" ? "" : element.tagName);
         if (typeof(cname) !== "string") {cname = String(cname)} // jsxgraph uses non-string class names!
         if (element.firstChild && !cname.match(/(^| )MathJax/) && !this.skipTags.exec(tname)) {
-          ignore = (ignore || this.ignoreClass.exec(cname)) && !this.processClass.exec(cname);
-          this.scanElement(element.firstChild,stop,ignore);
+          ignoreChild = (ignore || this.ignoreClass.exec(cname)) && !this.processClass.exec(cname);
+          this.scanElement(element.firstChild,stop,ignoreChild);
         }
       }
       if (element) {element = element.nextSibling}
@@ -151,7 +148,7 @@ MathJax.Extension.tex2jax = {
       }
       if (this.search.matched) {element = this.encloseMath(element)}
       if (element) {
-        do {prev = element; element = element.nextSibling} 
+        do {prev = element; element = element.nextSibling}
           while (element && (element.nodeName.toLowerCase() === 'br' ||
                              element.nodeName.toLowerCase() === '#comment'));
         if (!element || element.nodeName !== '#text') {return prev}
@@ -176,10 +173,17 @@ MathJax.Extension.tex2jax = {
       };
       this.switchPattern(this.endPattern(this.search.end));
     } else {                                         // escaped dollar signs
-      var dollar = match[0].replace(/\\(.)/g,'$1');
-      element.nodeValue = element.nodeValue.substr(0,match.index) + dollar +
-                          element.nodeValue.substr(match.index + match[0].length);
-      this.pattern.lastIndex -= match[0].length - dollar.length;
+      // put $ in a span so it doesn't get processed again
+      // split off backslashes so they don't get removed later
+      var slashes = match[0].substr(0,match[0].length-1), n, span;
+      if (slashes.length % 2 === 0) {span = [slashes.replace(/\\\\/g,"\\")]; n = 1}
+        else {span = [slashes.substr(1).replace(/\\\\/g,"\\"),"$"]; n = 0}
+      span = MathJax.HTML.Element("span",null,span);
+      var text = MathJax.HTML.TextNode(element.nodeValue.substr(0,match.index));
+      element.nodeValue = element.nodeValue.substr(match.index + match[0].length - n);
+      element.parentNode.insertBefore(span,element);
+      element.parentNode.insertBefore(text,span);
+      this.pattern.lastIndex = n;
     }
     return element;
   },
@@ -203,21 +207,24 @@ MathJax.Extension.tex2jax = {
   },
   
   encloseMath: function (element) {
-    var search = this.search, close = search.close, CLOSE;
+    var search = this.search, close = search.close, CLOSE, math;
     if (search.cpos === close.length) {close = close.nextSibling}
        else {close = close.splitText(search.cpos)}
-    if (!close) {CLOSE = close = search.close.parentNode.appendChild(document.createTextNode(""))}
-    if (element === search.close) {element = close}
+    if (!close) {CLOSE = close = MathJax.HTML.addText(search.close.parentNode,"")}
     search.close = close;
-    var math = search.open.splitText(search.opos);
+    math = (search.opos ? search.open.splitText(search.opos) : search.open);
     while (math.nextSibling && math.nextSibling !== close) {
       if (math.nextSibling.nodeValue !== null) {
         if (math.nextSibling.nodeName === "#comment") {
-          math.nodeValue += math.nextSibling.nodeValue.replace(/^\[CDATA\[(.*)\]\]$/,"$1");
+          math.nodeValue += math.nextSibling.nodeValue.replace(/^\[CDATA\[((.|\n|\r)*)\]\]$/,"$1");
         } else {
           math.nodeValue += math.nextSibling.nodeValue;
         }
-      } else {math.nodeValue += ' '}
+      } else if (this.msieNewlineBug) {
+        math.nodeValue += (math.nextSibling.nodeName.toLowerCase() === "br" ? "\n" : " ");
+      } else {
+        math.nodeValue += " ";
+      }
       math.parentNode.removeChild(math.nextSibling);
     }
     var TeX = math.nodeValue.substr(search.olen,math.nodeValue.length-search.olen-search.clen);
@@ -231,13 +238,7 @@ MathJax.Extension.tex2jax = {
   
   insertNode: function (node) {
     var search = this.search;
-    if (search.close && search.close.parentNode) {
-      search.close.parentNode.insertBefore(node,search.close);
-    } else if (search.open.nextSibling) {
-      search.open.parentNode.insertBefore(node,search.open.nextSibling);
-    } else {
-      search.open.parentNode.appendChild(node);
-    }
+    search.close.parentNode.insertBefore(node,search.close);
   },
   
   createPreview: function (mode,tex) {
@@ -253,13 +254,14 @@ MathJax.Extension.tex2jax = {
   createMathTag: function (mode,tex) {
     var script = document.createElement("script");
     script.type = "math/tex" + mode;
-    if (MathJax.Hub.Browser.isMSIE) {script.text = tex}
-      else {script.appendChild(document.createTextNode(tex))}
+    MathJax.HTML.setScript(script,tex);
     this.insertNode(script);
     return script;
   },
   
-  filterTeX: function (tex) {return tex}
+  filterTeX: function (tex) {return tex},
+  
+  msieNewlineBug: (MathJax.Hub.Browser.isMSIE && document.documentMode < 9)
   
 };
 

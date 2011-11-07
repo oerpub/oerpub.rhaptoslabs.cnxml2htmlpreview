@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The MathJax.Callback Class &mdash; MathJax v1.0 documentation</title>
+    <title>The MathJax.Callback Class &mdash; MathJax v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/mj.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,12 +21,14 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="MathJax v1.0 documentation" href="../index.html" />
+    <!--<script type="text/javascript" src="../../../MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <link rel="top" title="MathJax v1.1 documentation" href="../index.html" />
     <link rel="up" title="The MathJax API" href="index.html" />
     <link rel="next" title="The MathJax.Callback.Queue Class" href="queue.html" />
     <link rel="prev" title="The MathJax.HTML Object" href="html.html" /> 
   </head>
   <body>
+    
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="html.html" title="The MathJax.HTML Object"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">The MathJax API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -72,11 +74,11 @@ use the <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.C
 specification into a Callback object if needed.</p>
 <p>A callback specification is any one of the following:</p>
 <blockquote>
-<dl class="describe">
+<div><dl class="describe">
 <dt>
 <tt class="descname">fn</tt></dt>
 <dd><p>A function that is to be called when the callback is executed.
-No additional data is passed to it (other that what it is
+No additional data is passed to it (other than what it is
 called with at the time the callback is executed), and <cite>this</cite>
 will be the window object.</p>
 </dd></dl>
@@ -123,7 +125,7 @@ the function as well.</p>
 
 <p>..describe:: [&#8220;method&#8221;, object]</p>
 <blockquote>
-<p>Here, <cite>object</cite> is an object that has a method called <cite>method</cite>, and
+<div><p>Here, <cite>object</cite> is an object that has a method called <cite>method</cite>, and
 the callback will execute that method (with the object as
 <cite>this</cite>) when it is called.  For example,</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
@@ -131,7 +133,7 @@ the callback will execute that method (with the object as
 </div>
 <p>would call the <cite>length</cite> method on the array <tt class="docutils literal"><span class="pre">[1,2,3,4]</span></tt> when
 the callback is called, returning <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
-</blockquote>
+</div></blockquote>
 <dl class="describe">
 <dt>
 <tt class="descname">[&quot;method&quot;, object, data...]</tt></dt>
@@ -167,7 +169,7 @@ part of the global namespace.  The return value is the value of
 the last statement executed in the string.</p>
 </dd></dl>
 
-</blockquote>
+</div></blockquote>
 <div class="section" id="executing-a-callback-object">
 <h3>Executing a Callback Object<a class="headerlink" href="#executing-a-callback-object" title="Permalink to this headline">¶</a></h3>
 <p>The <cite>Callback</cite> object is itself a function, and calling that function
@@ -187,7 +189,7 @@ of a file), or in response to a user action.  For example:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;x contains &quot;</span><span class="o">+</span><span class="nx">x</span><span class="p">)};</span>
 <span class="kd">function</span> <span class="nx">DelayedX</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="s2">&quot;hi&quot;</span><span class="p">;</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Callback</span><span class="p">([</span><span class="nx">f</span><span class="p">,</span> <span class="nx">x</span><span class="p">],</span> <span class="nx">time</span><span class="p">);</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Callback</span><span class="p">([</span><span class="nx">f</span><span class="p">,</span> <span class="nx">x</span><span class="p">],</span> <span class="nx">time</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -223,7 +225,7 @@ function.</p>
 <dt>
 <tt class="descname">called</tt></dt>
 <dd><p>Set to <tt class="docutils literal"><span class="pre">true</span></tt> after the callback has been called, and undefined
-otherwise.  A callback will not be exectued a second time unless
+otherwise.  A callback will not be executed a second time unless
 the callback&#8217;s <a class="reference internal" href="#reset" title="reset"><tt class="xref py py-meth docutils literal"><span class="pre">reset()</span></tt></a> method is called first, or its
 <tt class="docutils literal"><span class="pre">autoReset</span></tt> property is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</p>
 </dd></dl>
@@ -291,7 +293,7 @@ commands.</p>
 <tt class="descname">executeHooks</tt><big>(</big><em>hooks</em><span class="optional">[</span>, <em>data</em><span class="optional">[</span>, <em>reset</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#executeHooks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls each callback in the <cite>hooks</cite> array (or the single hook if it
 is not an array), passing it the arguments stored in the data
-array.  It <cite>reset</cite> is <tt class="docutils literal"><span class="pre">true</span></tt>, then the callback&#8217;s
+array.  If <cite>reset</cite> is <tt class="docutils literal"><span class="pre">true</span></tt>, then the callback&#8217;s
 <a class="reference internal" href="#reset" title="reset"><tt class="xref py py-meth docutils literal"><span class="pre">reset()</span></tt></a> method will be called before each hook is
 executed.  If any of the hooks returns a <cite>Callback</cite> object, then
 it collects those callbacks and returns a new callback that will
@@ -389,11 +391,6 @@ and returns the signal object.  See
   <h4>Next topic</h4>
   <p class="topless"><a href="queue.html"
                         title="next chapter">The MathJax.Callback.Queue Class</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/api/callback.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -423,13 +420,14 @@ and returns the signal object.  See
         <li class="right" >
           <a href="html.html" title="The MathJax.HTML Object"
              >previous</a> |</li>
-        <li><a href="../index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="index.html" >The MathJax API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 Design Science.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+        &copy; Copyright 2011 Design Science.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
+    
   </body>
 </html>

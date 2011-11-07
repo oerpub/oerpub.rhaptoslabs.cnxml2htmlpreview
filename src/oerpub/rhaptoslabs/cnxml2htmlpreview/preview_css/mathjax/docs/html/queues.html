@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using Queues &mdash; MathJax v1.0 documentation</title>
+    <title>Using Queues &mdash; MathJax v1.1 documentation</title>
     <link rel="stylesheet" href="_static/mj.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,12 +21,14 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="MathJax v1.0 documentation" href="index.html" />
+    <!--<script type="text/javascript" src="../../MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <link rel="top" title="MathJax v1.1 documentation" href="index.html" />
     <link rel="up" title="Synchronizing your code with MathJax" href="synchronize.html" />
     <link rel="next" title="Using Signals" href="signals.html" />
     <link rel="prev" title="Using Callbacks" href="callbacks.html" /> 
   </head>
   <body>
+    
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="callbacks.html" title="Using Callbacks"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="synchronize.html" accesskey="U">Synchronizing your code with MathJax</a> &raquo;</li> 
       </ul>
     </div>  
@@ -55,7 +57,7 @@
 its actions, both internally, and with external programs, like
 javascript code that you may write as part of dynamic web pages.
 Because many actions in MathJax (like loading files) operate
-asynchornously, MathJax needs a way to coordinate those actions so
+asynchronously, MathJax needs a way to coordinate those actions so
 that they occur in the right order.  The
 <cite>MathJax.Callback.Queue</cite> object provides that mechanism.</p>
 <p>A <cite>callback queue</cite> is a list of commands that will be performed one at
@@ -107,11 +109,11 @@ that could operate asynchronously.  For example:</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Here, the command <tt class="docutils literal"><span class="pre">MathJax.Ajax.require(&quot;extensions/AMSmath.js&quot;)</span></tt> is
-queued between two calls to <tt class="docutils literal"><span class="pre">f</span></tt>.  The first call to <tt class="docutils literal"><span class="pre">f(1)</span></tt> will be
-made immediately, then the <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Ajax.Require()</span></tt> statement will
-be performed.  Since the <tt class="docutils literal"><span class="pre">Require</span></tt> method loads a file, it operates
-asynchronously, and its return value is a <cite>MathJax.Callback</cite>
+<p>Here, the command <tt class="docutils literal"><span class="pre">MathJax.Ajax.Require(&quot;[MathJax]/extensions/AMSmath.js&quot;)</span></tt>
+is queued between two calls to <tt class="docutils literal"><span class="pre">f</span></tt>.  The first call to <tt class="docutils literal"><span class="pre">f(1)</span></tt> will
+be made immediately, then the <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Ajax.Require()</span></tt> statement
+will be performed.  Since the <tt class="docutils literal"><span class="pre">Require</span></tt> method loads a file, it
+operates asynchronously, and its return value is a <cite>MathJax.Callback</cite>
 object that will be called when the file is loaded.  The call to
 <tt class="docutils literal"><span class="pre">f(2)</span></tt> will not be made until that callback is performed,
 effectively synchronizing the second call to <tt class="docutils literal"><span class="pre">f</span></tt> with the completion
@@ -216,12 +218,12 @@ instead are defined in extensions that are loaded automatically when
 needed.  The typesetting of an expression containing one of these TeX
 commands can cause the typesetting process to be suspended while the
 file is loaded, and then restarted when the extension has become
-evailable.</p>
+available.</p>
 <p>As a result, any call to <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Hub.Typeset()</span></tt> (or
 <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Hub.Process()</span></tt>, or <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Hub.Update()</span></tt>, etc.)
 could return long before the mathematics is actually typeset, and the
 rest of your code may run before the mathematics is available.  If you
-have code that relys on the mathematics being visible on screen, you
+have code that relies on the mathematics being visible on screen, you
 will need to break that out into a separate operation that is
 synchronized with the typesetting via the MathJax queue.</p>
 <p>Furthermore, your own typesetting calls may need to wait for file loading
@@ -288,11 +290,6 @@ finishes everything it has queued when it was loaded.  For example,</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="signals.html"
                         title="next chapter">Using Signals</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/queues.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -322,13 +319,14 @@ finishes everything it has queued when it was loaded.  For example,</p>
         <li class="right" >
           <a href="callbacks.html" title="Using Callbacks"
              >previous</a> |</li>
-        <li><a href="index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="synchronize.html" >Synchronizing your code with MathJax</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 Design Science.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+        &copy; Copyright 2011 Design Science.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
+    
   </body>
 </html>

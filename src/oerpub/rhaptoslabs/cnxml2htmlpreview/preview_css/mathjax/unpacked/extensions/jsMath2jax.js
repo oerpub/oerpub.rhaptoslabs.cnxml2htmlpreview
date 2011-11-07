@@ -15,7 +15,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2010 Design Science, Inc.
+ *  Copyright (c) 2010-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -31,12 +31,9 @@
  */
 
 MathJax.Extension.jsMath2jax = {
-  version: "1.0",
+  version: "1.1.1",
   
   config: {
-    element: null,    // The ID of the element to be processed
-                      //   (defaults to full document)
-
     preview: "TeX"    // Set to "none" to prevent preview strings from being inserted
                       //   or to an array that specifies an HTML snippet to use for
                       //   the preview.
@@ -44,7 +41,7 @@ MathJax.Extension.jsMath2jax = {
   
   PreProcess: function (element) {
     if (!this.configured) {
-      MathJax.Hub.Insert(this.config,(MathJax.Hub.config.jsMath2jax||{}));
+      this.config = MathJax.Hub.CombineConfig("jsMath2jax",this.config);
       if (this.config.Augment) {MathJax.Hub.Insert(this,this.config.Augment)}
       if (typeof(this.config.previewTeX) !== "undefined" && !this.config.previewTeX)
         {this.config.preview = "none"} // backward compatibility for previewTeX parameter
@@ -52,22 +49,24 @@ MathJax.Extension.jsMath2jax = {
       this.configured = true;
     }
     if (typeof(element) === "string") {element = document.getElementById(element)}
-    if (!element) {element = this.config.element || document.body}
+    if (!element) {element = document.body}
     var span = element.getElementsByTagName("span"), i;
     for (i = span.length-1; i >= 0; i--)
-      {if (String(span[i].className).match(/\bmath\b/)) {this.ConvertMath(span[i],"")}}
+      {if (String(span[i].className).match(/(^| )math( |$)/)) {this.ConvertMath(span[i],"")}}
     var div = element.getElementsByTagName("div");
     for (i = div.length-1; i >= 0; i--)
-      {if (String(div[i].className).match(/\bmath\b/)) {this.ConvertMath(div[i],"; mode=display")}}
+      {if (String(div[i].className).match(/(^| )math( |$)/)) {this.ConvertMath(div[i],"; mode=display")}}
   },
   
   ConvertMath: function (node,mode) {
-    var parent = node.parentNode,
-        script = this.createMathTag(mode,node.innerHTML);
-    if (node.nextSibling) {parent.insertBefore(script,node.nextSibling)}
-      else {parent.appendChild(script)}
-    if (this.config.preview !== "none") {this.createPreview(node)}
-    parent.removeChild(node);
+    if (node.getElementsByTagName("script").length === 0) {
+      var parent = node.parentNode,
+          script = this.createMathTag(mode,node.innerHTML);
+      if (node.nextSibling) {parent.insertBefore(script,node.nextSibling)}
+        else {parent.appendChild(script)}
+      if (this.config.preview !== "none") {this.createPreview(node)}
+      parent.removeChild(node);
+    }
   },
   
   createPreview: function (node) {
@@ -81,10 +80,10 @@ MathJax.Extension.jsMath2jax = {
   },
   
   createMathTag: function (mode,tex) {
+    tex = tex.replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&");
     var script = document.createElement("script");
     script.type = "math/tex" + mode;
-    if (MathJax.Hub.Browser.isMSIE) {script.text = tex}
-      else {script.appendChild(document.createTextNode(tex))}
+    MathJax.HTML.setScript(script,tex);
     return script;
   },
   

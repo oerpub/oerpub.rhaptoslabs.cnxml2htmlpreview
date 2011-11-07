@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using Callbacks &mdash; MathJax v1.0 documentation</title>
+    <title>Using Callbacks &mdash; MathJax v1.1 documentation</title>
     <link rel="stylesheet" href="_static/mj.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,12 +21,14 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="MathJax v1.0 documentation" href="index.html" />
+    <!--<script type="text/javascript" src="../../MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    <link rel="top" title="MathJax v1.1 documentation" href="index.html" />
     <link rel="up" title="Synchronizing your code with MathJax" href="synchronize.html" />
     <link rel="next" title="Using Queues" href="queues.html" />
     <link rel="prev" title="Synchronizing your code with MathJax" href="synchronize.html" /> 
   </head>
   <body>
+    
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -39,7 +41,7 @@
         <li class="right" >
           <a href="synchronize.html" title="Synchronizing your code with MathJax"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="synchronize.html" accesskey="U">Synchronizing your code with MathJax</a> &raquo;</li> 
       </ul>
     </div>  
@@ -70,9 +72,9 @@ callback specifications as arguments and return callback structures.
 These routines always will return a callback even when none was
 specified in the arguments, and in that case, the callback is a &#8220;do
 nothing&#8221; callback.  The reason for this is so that the resulting
-callback can be used can be used in a <cite>MathJax.Callback.Queue</cite> for
-synchronization purposes, so that the actions following it in the
-queue will not be performed until after the callback has been fired.</p>
+callback can be used in a <cite>MathJax.Callback.Queue</cite> for synchronization
+purposes, so that the actions following it in the queue will not be
+performed until after the callback has been fired.</p>
 <p>For example, the <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Ajax.Require()</span></tt> method can be used to
 load external files, and it returns a callback that is called when the
 file has been loaded and executed.  If you want to load several files
@@ -80,7 +82,7 @@ and wait for them all to be loaded before performing some action, you
 can create a <cite>Queue</cite> into which you push the results of the
 <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Ajax.Require()</span></tt> calls, and then push a callback for the
 action.  The final action will not be performed until all the
-file-load callbacks (which preceed it int he queue) have been called;
+file-load callbacks (which precede it in the queue) have been called;
 i.e., the action will not occur until all the files are loaded.</p>
 <div class="section" id="specifying-a-callback">
 <h2>Specifying a Callback<a class="headerlink" href="#specifying-a-callback" title="Permalink to this headline">¶</a></h2>
@@ -149,7 +151,7 @@ the object without knowing explicitly where the object is stored.</p>
 </div>
 <p>creates an object that contains three items, a <cite>firstname</cite>, and
 <cite>lastname</cite>, and a method that shows the person&#8217;s full name in an
-alert.  So <tt class="docutils literal"><span class="pre">aPerson.fullName()</span></tt> would cause an alert with the text
+alert.  So <tt class="docutils literal"><span class="pre">aPerson.showName()</span></tt> would cause an alert with the text
 <tt class="docutils literal"><span class="pre">John</span> <span class="pre">Smith</span></tt> to appear.  Note, however that this only works if the
 method is called as <tt class="docutils literal"><span class="pre">aPerson.showName()</span></tt>; if instead you did</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">aPerson</span><span class="p">.</span><span class="nx">showName</span><span class="p">;</span>  <span class="c1">// assign f the function from aPerson</span>
@@ -195,7 +197,7 @@ well by including them in the array that specifies the callback:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">Require</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">,[</span><span class="s2">&quot;method&quot;</span><span class="p">,</span><span class="nx">object</span><span class="p">,</span><span class="nx">arg1</span><span class="p">,</span><span class="nx">arg2</span><span class="p">,...]);</span>
 </pre></div>
 </div>
-<p>This approach is useful when you are pushing a callback for one one
+<p>This approach is useful when you are pushing a callback for one of
 MathJax&#8217;s Hub routines into the MathJax processing queue.  For example,</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Queue</span><span class="p">([</span><span class="s2">&quot;Typeset&quot;</span><span class="p">,</span><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">,</span><span class="s2">&quot;MathDiv&quot;</span><span class="p">]);</span>
 </pre></div>
@@ -207,7 +209,7 @@ information about the valid methods of specifying a callback.</p>
 </div>
 <div class="section" id="creating-a-callback-explicitly">
 <h3>Creating a Callback Explicitly<a class="headerlink" href="#creating-a-callback-explicitly" title="Permalink to this headline">¶</a></h3>
-<p>When you call a method that accpets a callback, you usually pass it a
+<p>When you call a method that accepts a callback, you usually pass it a
 callback specification (like in the examples above), which <em>describes</em>
 a callback (the method will create the actual <cite>Callback</cite> object, and
 return that to you as its return value).  You don&#8217;t usually create
@@ -225,7 +227,7 @@ when it is called, Internet Explorer does not implement that feature,
 so you can&#8217;t rely on it.)  You can use a <cite>Callback</cite> object to
 do this, and the <tt class="xref py py-meth docutils literal"><span class="pre">MathJax.Callback()</span></tt> method will create one for
 you.  For example,</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">myTimer</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;x = &quot;</span><span class="o">+</span><span class="nx">x</span><span class="p">)}</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;x = &quot;</span><span class="o">+</span><span class="nx">x</span><span class="p">)}</span>
 <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Callback</span><span class="p">([</span><span class="nx">f</span><span class="p">,</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">]),</span><span class="mi">500</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -259,11 +261,6 @@ schedules it to be called in half a second.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="queues.html"
                         title="next chapter">Using Queues</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/callbacks.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -293,13 +290,14 @@ schedules it to be called in half a second.</p>
         <li class="right" >
           <a href="synchronize.html" title="Synchronizing your code with MathJax"
              >previous</a> |</li>
-        <li><a href="index.html">MathJax v1.0 documentation</a> &raquo;</li>
+        <li><a href="index.html">MathJax v1.1 documentation</a> &raquo;</li>
           <li><a href="synchronize.html" >Synchronizing your code with MathJax</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010 Design Science.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+        &copy; Copyright 2011 Design Science.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
+    
   </body>
 </html>

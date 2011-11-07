@@ -6,7 +6,7 @@
  *
  *  ---------------------------------------------------------------------
  *  
- *  Copyright (c) 2010 Design Science, Inc.
+ *  Copyright (c) 2010-2011 Design Science, Inc.
  * 
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -21,8 +21,10 @@
  *  limitations under the License.
  */
 
-(function (MML) {
-  var VERSION = "1.0";
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+  var VERSION = "1.1";
+  var MML = MathJax.ElementJax.mml,
+      HTMLCSS = MathJax.OutputJax["HTML-CSS"];
   
   MML.ms.Augment({
     toHTML: function (span) {
@@ -45,7 +47,7 @@
   MML.ms.prototype.defaults.fontfamily = 'monospace';
   
   MathJax.Hub.Startup.signal.Post("HTML-CSS ms Ready");
-  
-})(MathJax.ElementJax.mml);
+  MathJax.Ajax.loadComplete(HTMLCSS.autoloadDir+"/ms.js");
 
-MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].autoloadDir+"/ms.js");
+});
+
