@@ -6,12 +6,7 @@ version = '1.0'
 long_description = (
     open('README.rst').read()
     + '\n' +
-    'Contributors\n'
-    '============\n'
-    + '\n' +
-    open('CONTRIBUTORS.txt').read()
-    + '\n' +
-    open('CHANGES.txt').read()
+    open('CHANGES').read()
     + '\n')
 
 setup(name='oerpub.rhaptoslabs.cnxml2htmlpreview',
@@ -26,7 +21,7 @@ setup(name='oerpub.rhaptoslabs.cnxml2htmlpreview',
       keywords='',
       author='Marvin Reimer',
       author_email='',
-      url='https://github.com/jbeyers/oerpub.rhaptoslabs.cnxml2htmlpreview',
+      url='https://github.com/oerpub/oerpub.rhaptoslabs.cnxml2htmlpreview',
       license='gpl',
       packages=find_packages('src'),
       package_dir = {'': 'src'},
