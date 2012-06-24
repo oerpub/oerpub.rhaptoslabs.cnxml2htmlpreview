@@ -97,7 +97,7 @@
 	<html xmlns:m="http://www.w3.org/1998/Math/MathML">
 	  <head>
 	    <title><xsl:value-of select="cnx:document/cnx:title|cnx:module/cnx:title"/></title>
-        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"></meta>
 
 	    <!-- Marvin: ns4 is needed for Netscape 4. Netscape 4 will not be supported -->
       <!-- <link rel="stylesheet" type="text/css" href="cnx-styles/sky/ns4.css"/> -->
