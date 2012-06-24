@@ -94,9 +94,10 @@
       <!-- FAKE WRAPPER -->
       <xsl:when test="$wrapper">
 
-	<html>
+	<html xmlns:m="http://www.w3.org/1998/Math/MathML">
 	  <head>
 	    <title><xsl:value-of select="cnx:document/cnx:title|cnx:module/cnx:title"/></title>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"></meta>
 
 	    <!-- Marvin: ns4 is needed for Netscape 4. Netscape 4 will not be supported -->
       <!-- <link rel="stylesheet" type="text/css" href="cnx-styles/sky/ns4.css"/> -->
@@ -132,11 +133,11 @@
       <!-- add local MathJax -->
       <script type="text/javascript">
         <xsl:attribute name="src">
-          <xsl:value-of select="concat($absolute_stylesheet_path, '/preview_css/mathjax/MathJax.js')"/>
+          <xsl:value-of select="'http://cdn.mathjax.org/mathjax/latest/MathJax.js'"/>
         </xsl:attribute>
         <xsl:text>
           MathJax.Hub.Config({
-            	extensions: ["mml2jax-bugfix.js"],
+            	extensions: ["mml2jax.js"],
             	menuSettings: {zoom:"Click"},
             	"HTML-CSS": {scale:110},
             	jax: ["input/MathML","output/HTML-CSS"]
