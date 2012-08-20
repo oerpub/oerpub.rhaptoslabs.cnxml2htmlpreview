@@ -108,10 +108,10 @@
 	    </link>
 
         <!-- Aloha editor -->
-        <link rel="stylesheet" type="text/css" href="http://cdn.aloha-editor.org/latest/css/aloha.css" > <!-- xhtml dummy --></link>
-        <script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/require.js"> <!-- xhtml dummy --></script>
+        <link rel="stylesheet" type="text/css" href="http://cdn.aloha-editor.org/latest/css/aloha.css" ><xsl:text> </xsl:text><!-- xhtml workaround --></link>
+        <script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/require.js"><xsl:text> </xsl:text><!-- xhtml workaround --></script>
         <script>var Aloha = {};</script>
-        <script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link"> <!-- xhtml dummy --></script>
+        <script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link"><xsl:text> </xsl:text><!-- xhtml workaround --></script>
         <script type="text/javascript">
             Aloha.ready( function() {
                 Aloha.jQuery('#cnx_main').aloha();
