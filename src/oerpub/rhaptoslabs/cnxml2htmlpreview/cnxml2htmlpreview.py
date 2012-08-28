@@ -36,10 +36,11 @@ import libxml2
 import libxslt
 #from lxml import etree
 #import magic
+from pkg_resources import resource_filename
 
 #XHTML_ENTITIES = os.path.join('www', 'catalog_xhtml', 'catalog.xml')
 current_dir = os.path.dirname(__file__)
-CNXML2HTML_XSL = os.path.join(current_dir, 'www', 'cnxml_render.xsl')
+CNXML2HTML_XSL = resource_filename('rhaptos.cnxmlutils', 'xsl/cnxml-to-html5.xsl')
 
 # Main method. Doing all steps for the HTMLSOUP to CNXML transformation
 def xsl_transform(content):
