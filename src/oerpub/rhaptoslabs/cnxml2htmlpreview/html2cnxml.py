@@ -48,8 +48,10 @@ def xsl_transform(content):
     return strResult
 
 def html_to_cnxml(content):
-    content = xsl_transform(content)
-    return content
+    if isinstance(content, unicode):
+        # libxml2 wants utf-8
+        content = content.encode('UTF-8')
+    return xsl_transform(content)
 
 if __name__ == "__main__":
     print html_to_cnxml(open(sys.argv[1], 'r').read())
