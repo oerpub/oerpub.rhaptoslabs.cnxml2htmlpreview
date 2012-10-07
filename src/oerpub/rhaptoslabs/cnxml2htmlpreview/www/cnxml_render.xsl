@@ -130,7 +130,7 @@
 
 	    <xsl:comment>****QML**** sets the feedback and hints to non-visible.</xsl:comment>
 
-      <!-- add local MathJax -->
+      <!-- add latest MathJax from cdn.mathjax.org -->
       <script type="text/javascript">
         <xsl:attribute name="src">
           <xsl:value-of select="'http://cdn.mathjax.org/mathjax/latest/MathJax.js'"/>
