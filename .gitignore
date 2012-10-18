@@ -1,2 +1,3 @@
 *.pyc
+.*.sw?
 src/oerpub.rhaptoslabs.cnxml2htmlpreview.egg-info/
