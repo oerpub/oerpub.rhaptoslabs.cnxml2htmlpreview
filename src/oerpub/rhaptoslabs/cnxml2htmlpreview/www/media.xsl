@@ -4,6 +4,24 @@
   <!-- Squash PARAMs-->
   <xsl:template match="cnx:param"/>
 
+  <!-- Add parent's ID -->
+  <xsl:template name="ParentMediaIdCheck">
+    <xsl:if test="parent::cnx:media">
+      <xsl:attribute name="id">
+        <xsl:value-of select="parent::cnx:media/@id"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="DisplayCheck">
+    <xsl:if test="parent::cnx:media/@display">
+      <xsl:attribute name="class">
+        <xsl:text>media </xsl:text>
+        <xsl:value-of select="parent::cnx:media/@display"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
   <!-- MEDIA (catch-all/fall-back case) -->
   <xsl:template match="cnx:media">
     <xsl:choose>
@@ -29,9 +47,16 @@
   </xsl:template>
 
   <xsl:template name="default-media">
-    <div class="media">
-      <xsl:call-template name="IdCheck"/>
+    <span class="media">
+      <xsl:if test="self::cnx:media">
+        <xsl:call-template name="IdCheck"/>
+      </xsl:if>
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
       <object>
+        <xsl:if test="not(self::cnx:media)">
+          <xsl:call-template name="IdCheck"/>
+        </xsl:if>
         <xsl:for-each select="@width|@height">
           <xsl:attribute name="{name()}">
             <xsl:value-of select="."/>
@@ -65,21 +90,26 @@
         </a>
         <xsl:apply-templates/>
       </object>
-    </div>
+    </span>
   </xsl:template>
 
   <!-- TEXT -->
   <xsl:template match="cnx:text">
-    <div class="media">
-      <xsl:call-template name="IdCheck"/>
-      <xsl:apply-templates/>
-    </div>
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="text">
+        <xsl:call-template name="IdCheck"/>
+        <xsl:apply-templates/>
+      </span>
+    </span>
   </xsl:template>
 
   <!-- MEDIA of type: IMAGE (cnxml version 0.5 and below) --> 
   <xsl:template match="cnx:media[starts-with(@type,'image')]|cnx:mediaobject[starts-with(@type,'image')]">
     <span class="media">
       <xsl:call-template name="IdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
       <xsl:choose>
         <xsl:when test="child::cnx:param[@name='thumbnail']">
           <a href="{@src}">
@@ -111,9 +141,11 @@
     </span>
   </xsl:template>
 
-  <!-- IMAGE (cnxml version 0.6) -->
+  <!-- IMAGE (cnxml version 0.6+) -->
   <xsl:template match="cnx:image">
-    <span class="media" id="{parent::cnx:media/@id}">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
       <xsl:choose>
         <xsl:when test="@thumbnail!=''">
           <a href="{@src}">
@@ -286,9 +318,11 @@
     </span>
   </xsl:template>
 
-  <!-- JAVA-APPLET (cnxml version 0.6) -->
+  <!-- JAVA-APPLET (cnxml version 0.6+) -->
   <xsl:template match="cnx:java-applet">
-    <span class="media" id="{parent::cnx:media/@id}">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
       <applet code="{@code}">
         <xsl:for-each select="@width|@height|@id|@codebase|@archive|@name">
           <xsl:attribute name="{name()}">
@@ -318,8 +352,8 @@
   <!-- MEDIA of type: VIDEO (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[starts-with(@type, 'video/')]">
     <span class="media">
+      <xsl:call-template name="IdCheck"/>
       <object>
-        <xsl:call-template name="IdCheck"/>
         <xsl:for-each select="cnx:param[@name='classid' or @name='codebase' or @name='width' or @name='height']">
           <xsl:attribute name="{@name}">
              <xsl:value-of select="@value"/>
@@ -341,9 +375,11 @@
     </span>
   </xsl:template>
 
-  <!-- VIDEO (cnxml version 0.6) -->
+  <!-- VIDEO (cnxml version 0.6+) -->
   <xsl:template match="cnx:video">
-    <span class="media" id="{parent::cnx:media/@id}">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
       <object>
         <xsl:for-each select="@classid|@codebase|@width|@height|@id">
           <xsl:attribute name="{name()}">
@@ -375,7 +411,7 @@
 
   <!-- MEDIA of type: LABVIEW 7.0 (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
-    <div class="media labview example">
+    <div class="media labview">
       <xsl:call-template name="IdCheck"/>
       <span class="cnx_label">
         <xsl:call-template name="gentext">
@@ -392,22 +428,26 @@
     </div>
   </xsl:template>
 
-  <!-- LABVIEW 7.0 (cnxml version 0.6) -->
+  <!-- LABVIEW 7.0 (cnxml version 0.6+) -->
   <xsl:template match="cnx:labview[@version='7.0']">
-    <div class="media labview example">
-      <xsl:call-template name="IdCheck"/>
-      <span class="cnx_label">
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
-          <xsl:with-param name="lang" select="/module/metadata/language"/>
-        </xsl:call-template>:
-        <xsl:text> </xsl:text>
-        <!--LabVIEW Example:-->
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="labview">
+        <xsl:call-template name="IdCheck"/>
+        <span class="cnx_label">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language"/>
+          </xsl:call-template>:
+          <xsl:text> </xsl:text>
+          <!--LabVIEW Example:-->
+        </span>
+        <xsl:for-each select=".">
+          (<a class="cnxn" href="{@viname}">run</a>) (<a class="cnxn" href="{@src}">source</a>)
+        </xsl:for-each>
       </span>
-      <xsl:for-each select=".">
-        (<a class="cnxn" href="{@viname}">run</a>) (<a class="cnxn" href="{@src}">source</a>)
-      </xsl:for-each>
-    </div>
+    </span>
   </xsl:template>
 
   <!-- MEDIA of type: LABVIEW 8.X (cnxml version 0.5 or below) -->
@@ -425,8 +465,10 @@
         <xsl:when test="$lv-version = 'vi82'">ftp://ftp.ni.com/support/labview/runtime/windows/8.2/LVRunTimeEng.exe</xsl:when>
       </xsl:choose>
     </xsl:param>
-    <div class="media labview example">
+    <span class="media">
       <xsl:call-template name="IdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="labview">
       <object classid="{$classid}" codebase="{$codebase}">
 	<xsl:if test="cnx:param[@name='width']">
 	  <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
@@ -460,7 +502,7 @@
 	  </xsl:if>
 	</embed>
       </object>
-      <p>
+      <span>
         <!--Download--> 
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Download</xsl:with-param>
@@ -474,11 +516,12 @@
             <xsl:with-param name="lang" select="/module/metadata/language"/>
           </xsl:call-template>
         </a>
-      </p>
-    </div>
+      </span>
+      </span>
+    </span>
   </xsl:template>
 
-  <!-- LABVIEW 8.X (cnxml version 0.6) -->
+  <!-- LABVIEW 8.X (cnxml version 0.6+) -->
   <xsl:template match="cnx:labview[@version!='7.0']">
     <xsl:param name="classid">
       <xsl:choose>
@@ -492,9 +535,12 @@
         <xsl:when test="@version = '8.2'">ftp://ftp.ni.com/support/labview/runtime/windows/8.2/LVRunTimeEng.exe</xsl:when>
       </xsl:choose>
     </xsl:param>
-    <div class="media labview example">
-      <xsl:call-template name="IdCheck"/>
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="labview">
       <object classid="{$classid}" codebase="{$codebase}">
+        <xsl:call-template name="IdCheck"/>
 	<xsl:if test="@width">
 	  <xsl:attribute name="width"><xsl:value-of select="@width"/></xsl:attribute>
 	</xsl:if>
@@ -514,7 +560,7 @@
 	  </xsl:if>
 	</embed>
       </object>
-      <p>
+      <span>
         <!--Download--> 
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Download</xsl:with-param>
@@ -528,15 +574,16 @@
             <xsl:with-param name="lang" select="/module/metadata/language"/>
           </xsl:call-template>
         </a>
-      </p>
-    </div>
+      </span>
+    </span>
+    </span>
   </xsl:template>
 
   <!-- MEDIA of type: FLASH (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
     <span class="media">
+    <xsl:call-template name="IdCheck"/>
     <object type="application/x-shockwave-flash" data="{@src}">
-      <xsl:call-template name="IdCheck"/>
       <xsl:for-each select="cnx:param">
         <xsl:choose>
           <xsl:when test="@name='width' or @name='height'">
@@ -561,9 +608,11 @@
     </span>
   </xsl:template>
 
-  <!-- FLASH (cnxml version 0.6) -->
+  <!-- FLASH (cnxml version 0.6+) -->
   <xsl:template match="cnx:flash">
     <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
       <object type="application/x-shockwave-flash" data="{@src}">
         <xsl:call-template name="IdCheck"/>
         <xsl:for-each select="@width|@height">
@@ -602,10 +651,27 @@
     </span>
   </xsl:template>
 
+  <!-- iFrame (cnxml version 0.8+) -->
+  <xsl:template match="cnx:iframe">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <iframe src="{@src}">
+        <xsl:call-template name="IdCheck"/>
+        <xsl:for-each select="@width|@height">
+          <xsl:attribute name="{name()}">
+            <xsl:value-of select="."/>
+          </xsl:attribute>
+          </xsl:for-each>
+      </iframe>
+    </span>
+  </xsl:template>
+
   <!-- MEDIA of type: Non-MP3 AUDIO (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
-    <div class="media musical example">
+    <div class="media">
       <xsl:call-template name="IdCheck"/>
+      <span class="audio">
       <span class="cnx_label">
         <!--Audio File:-->
         <xsl:call-template name="gentext">
@@ -623,12 +689,16 @@
 	  </xsl:otherwise>
 	</xsl:choose>
       </a>
-    </div>       
+      </span>
+    </div>
   </xsl:template>
 
-  <!-- Non-MP3 AUDIO (cnxml version 0.6) -->
+  <!-- Non-MP3 AUDIO (cnxml version 0.6+) -->
   <xsl:template match="cnx:audio"> 
-    <div class="media musical example">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="audio">
       <xsl:call-template name="IdCheck"/>
       <span class="cnx_label">
         <!--Audio File:-->
@@ -647,12 +717,14 @@
 	  </xsl:otherwise>
 	</xsl:choose>
       </a>
-    </div>       
+    </span>
+    </span>       
   </xsl:template>
 
-  <!-- MP3 AUDIO and MEDIA of type: MP3 AUDIO (Tony Brandt) -->
-  <xsl:template match="cnx:media[@type='audio/mpeg']|cnx:audio[@mime-type='audio/mpeg']"> 
-    <div class="media musical example">
+  <!-- MEDIA of type: MP3 AUDIO (Tony Brandt) (cnxml version 0.5 and below) -->
+  <!-- Note that the there is an override of this template in content_render.xsl (RhaptosContent) -->
+  <xsl:template match="cnx:media[@type='audio/mpeg']">
+    <div class="media audio">
       <xsl:call-template name="IdCheck"/>
       <span class="cnx_label">
         <!--Musical Example:-->
@@ -665,6 +737,28 @@
         <xsl:call-template name="composer-title-comments"/>
       </a>
     </div>       
+  </xsl:template>
+
+  <!-- MP3 AUDIO (Tony Brandt) (cnxml version 0.6+) -->
+  <!-- Note that the there is an override of this template in content_render.xsl (RhaptosContent) -->
+  <xsl:template match="cnx:audio[@mime-type='audio/mpeg']">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="audio">
+        <xsl:call-template name="IdCheck"/>
+        <span class="cnx_label">
+          <!--Musical Example:-->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">MusicalExample</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language"/>
+          </xsl:call-template>:
+        </span>
+        <a class="cnxn" href="{@src}">
+          <xsl:call-template name="composer-title-comments"/>
+        </a>
+      </span>
+    </span>
   </xsl:template>
 
   <!-- COMPOSER, TITLE and COMMENTS template -->
