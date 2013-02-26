@@ -36,14 +36,16 @@ import libxml2
 import libxslt
 #from lxml import etree
 #import magic
+from pkg_resources import resource_filename
 
 #XHTML_ENTITIES = os.path.join('www', 'catalog_xhtml', 'catalog.xml')
 current_dir = os.path.dirname(__file__)
-CNXML2HTML_XSL = os.path.join(current_dir, 'www', 'cnxml_render.xsl')
+CNXML2HTML_XSL = resource_filename('rhaptos.cnxmlutils', 'xsl/cnxml-to-html5.xsl')
+HTML2ALOHA_XSL = resource_filename('rhaptos.cnxmlutils', 'xsl/html5-to-aloha.xsl')
 
 # Main method. Doing all steps for the HTMLSOUP to CNXML transformation
 def xsl_transform(content):
-    # XSLT transformation
+    # CNXML to HTML5
     styleDoc1 = libxml2.parseFile(CNXML2HTML_XSL)
     style1 = libxslt.parseStylesheetDoc(styleDoc1)
     # doc1 = libxml2.parseFile(afile))
@@ -55,7 +57,17 @@ def xsl_transform(content):
     doc1.freeDoc()
     result1.freeDoc()
 
-    return strResult1
+    # HTML5 to Aloha HTML5
+    styleDoc2 = libxml2.parseFile(HTML2ALOHA_XSL)
+    style2 = libxslt.parseStylesheetDoc(styleDoc2)
+    doc2 = libxml2.parseDoc(strResult1)
+    result2 = style2.applyStylesheet(doc2, None)
+    strResult2 = style2.saveResultToString(result2)
+    style2.freeStylesheet()
+    doc2.freeDoc()
+    result2.freeDoc()
+
+    return strResult2
 
 def cnxml_to_htmlpreview(content):
     content = xsl_transform(content)
