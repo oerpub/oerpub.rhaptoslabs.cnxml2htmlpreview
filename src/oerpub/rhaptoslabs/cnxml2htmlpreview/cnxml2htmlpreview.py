@@ -77,8 +77,8 @@ def cnxml_to_htmlpreview(content):
     content = xsl_transform(content)
     return content
 
-def cnxml_to_structuredhtml(content, structured=True):
-    content = xsl_transform(content)
+def cnxml_to_structuredhtml(content):
+    content = xsl_transform(content, structured=True)
     return content
 
 if __name__ == "__main__":
