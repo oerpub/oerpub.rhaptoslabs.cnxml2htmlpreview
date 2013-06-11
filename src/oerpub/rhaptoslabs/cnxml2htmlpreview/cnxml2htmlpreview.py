@@ -43,8 +43,8 @@ current_dir = os.path.dirname(__file__)
 CNXML2HTML_XSL = resource_filename('rhaptos.cnxmlutils', 'xsl/cnxml-to-html5.xsl')
 HTML2ALOHA_XSL = resource_filename('rhaptos.cnxmlutils', 'xsl/html5-to-aloha.xsl')
 
-# Main method. Doing all steps for the CNXML to HTMLSOUP transformation
-def xsl_transform(content, structured=False):
+# Main method. Doing all steps for the CNXML to structured HTML5
+def xsl_transform_cnxml_to_structuredhtml(content):
     # CNXML to HTML5
     styleDoc1 = libxml2.parseFile(CNXML2HTML_XSL)
     style1 = libxslt.parseStylesheetDoc(styleDoc1)
@@ -56,30 +56,33 @@ def xsl_transform(content, structured=False):
     style1.freeStylesheet()
     doc1.freeDoc()
     result1.freeDoc()
+    return strResult1
 
-    if structured:
-        # return the structured, canonical html
-        strResult2 = strResult1
-    else:
-        # HTML5 to Aloha HTML5, html which is ready to be difplayed in Aloha
-        styleDoc2 = libxml2.parseFile(HTML2ALOHA_XSL)
-        style2 = libxslt.parseStylesheetDoc(styleDoc2)
-        doc2 = libxml2.parseDoc(strResult1)
-        result2 = style2.applyStylesheet(doc2, None)
-        strResult2 = style2.saveResultToString(result2)
-        style2.freeStylesheet()
-        doc2.freeDoc()
-        result2.freeDoc()
-
+# Main method. Doing all steps for the structured HTML5 to preview HTML4/5 soup
+def xsl_transform_structuredhtml_to_previewhtml(content):
+    # HTML5 to Preview HTML4/5 soup, which is ready to be difplayed in Aloha
+    styleDoc2 = libxml2.parseFile(HTML2ALOHA_XSL)
+    style2 = libxslt.parseStylesheetDoc(styleDoc2)
+    doc2 = libxml2.parseDoc(content)
+    result2 = style2.applyStylesheet(doc2, None)
+    strResult2 = style2.saveResultToString(result2)
+    style2.freeStylesheet()
+    doc2.freeDoc()
+    result2.freeDoc()
     return strResult2
+    
+def cnxml_to_structuredhtml(cnxml):
+    structuredhtml = xsl_transform_cnxml_to_structuredhtml(cnxml)
+    return structuredhtml
 
-def cnxml_to_htmlpreview(content):
-    content = xsl_transform(content)
-    return content
+def structuredhtml_to_htmlpreview(structuredhtml):
+    htmlpreview = xsl_transform_structuredhtml_to_previewhtml(structuredhtml)
+    return htmlpreview
 
-def cnxml_to_structuredhtml(content):
-    content = xsl_transform(content, structured=True)
-    return content
+def cnxml_to_htmlpreview(cnxml):
+    structuredhtml = xsl_transform_cnxml_to_structuredhtml(cnxml)
+    htmlpreview = xsl_transform_structuredhtml_to_previewhtml(structuredhtml)
+    return htmlpreview
 
 if __name__ == "__main__":
     f = open(sys.argv[1])
